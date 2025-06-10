@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Groupe A",
+    "subGroups": [
+      {
+        "name": "Sous-groupe A1",
+        "tests": [
+          {
+            "name": "Test A1-1",
+            "images": ["assets/images/img1.jpg", "assets/images/img2.jpg"]
+          }
+        ]
+      }
+    ]
+  }
+]
