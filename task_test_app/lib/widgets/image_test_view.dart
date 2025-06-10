@@ -91,7 +91,12 @@ class _ImageTestViewState extends State<ImageTestView>
       onLongPress: toggleMenu,
       child: Stack(
         children: [
-          Positioned.fill(child: Image.asset(image, fit: BoxFit.cover)),
+          Center(
+            child: SizedBox.expand(
+              key: ValueKey<String>(image),
+              child: Image.asset(image, fit: BoxFit.cover),
+            ),
+          ),
           Positioned(
             bottom: 0,
             left: 0,
@@ -103,7 +108,7 @@ class _ImageTestViewState extends State<ImageTestView>
               minHeight: 4,
             ),
           ),
-          
+
           if (showMenu)
             FadeTransition(
               opacity: _menuController,

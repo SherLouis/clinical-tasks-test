@@ -59,7 +59,8 @@ flutter:
 
   assets:
     - assets/data/tests.json
-    - assets/images/
+    - assets/images/Fruits/
+    - assets/images/Personnalites/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
