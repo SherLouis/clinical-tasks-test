@@ -9,20 +9,51 @@ class ImageTestView extends StatefulWidget {
   State<ImageTestView> createState() => _ImageTestViewState();
 }
 
-class _ImageTestViewState extends State<ImageTestView> {
+class _ImageTestViewState extends State<ImageTestView>
+    with SingleTickerProviderStateMixin {
   int index = 0;
   bool showMenu = false;
+  late final AnimationController _menuController;
+  late final Animation<Offset> _slideAnimation;
 
   void next() {
-    setState(() => index = (index < widget.images.length - 1) ? index + 1 : 0);
+    setState(() => index = (index + 1) % widget.images.length);
   }
 
   void prev() {
-    setState(() => index = (index > 0) ? index - 1 : widget.images.length - 1);
+    setState(
+      () => index = (index - 1 + widget.images.length) % widget.images.length,
+    );
   }
 
   void toggleMenu() {
-    setState(() => showMenu = !showMenu);
+    setState(() {
+      showMenu = !showMenu;
+      if (showMenu) {
+        _menuController.forward();
+      } else {
+        _menuController.reverse();
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _menuController = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(0, -0.1),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _menuController, curve: Curves.easeOut));
+  }
+
+  @override
+  void dispose() {
+    _menuController.dispose();
+    super.dispose();
   }
 
   @override
@@ -61,10 +92,31 @@ class _ImageTestViewState extends State<ImageTestView> {
       child: Stack(
         children: [
           Positioned.fill(child: Image.asset(image, fit: BoxFit.cover)),
-          if (showMenu) ...[
-            _buildOverlayZones(context),
-            _buildMenuButtons(context),
-          ],
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: LinearProgressIndicator(
+              value: (index + 1) / widget.images.length,
+              backgroundColor: Colors.black26,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.lightBlueAccent),
+              minHeight: 4,
+            ),
+          ),
+          
+          if (showMenu)
+            FadeTransition(
+              opacity: _menuController,
+              child: Stack(
+                children: [
+                  _buildOverlayZones(context),
+                  SlideTransition(
+                    position: _slideAnimation,
+                    child: _buildMenuButtons(context),
+                  ),
+                ],
+              ),
+            ),
         ],
       ),
     );
