@@ -14,61 +14,154 @@ class _ImageTestViewState extends State<ImageTestView> {
   bool showMenu = false;
 
   void next() {
-    if (index < widget.images.length - 1) setState(() => index++);
+    setState(() => index = (index < widget.images.length - 1) ? index + 1 : 0);
   }
 
   void prev() {
-    if (index > 0) setState(() => index--);
+    setState(() => index = (index > 0) ? index - 1 : widget.images.length - 1);
+  }
+
+  void toggleMenu() {
+    setState(() => showMenu = !showMenu);
   }
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final image = widget.images[index];
 
     return GestureDetector(
       onTapUp: (details) {
-        final size = MediaQuery.of(context).size;
+        if (showMenu) return;
+
         final dx = details.localPosition.dx;
         final dy = details.localPosition.dy;
 
-        if (showMenu) return;
+        final thirdWidth = size.width / 3;
+        final isLeft = dx < thirdWidth;
+        final isRight = dx > thirdWidth * 2;
+        final isCenter = !isLeft && !isRight;
 
-        if (dx < size.width / 3 && dy < size.height / 3) {
+        final isTop = dy < size.height / 2;
+
+        if (isCenter) {
+          toggleMenu();
+        } else if (isLeft && isTop) {
           prev();
-        } else if (dx < size.width / 3 && dy > 2* size.height / 3) {
+        } else if (isLeft && !isTop) {
           next();
-        } else if (dx > 2 * size.width / 3 && dy < size.height / 3) {
+        } else if (isRight && isTop) {
           next();
-        } else if (dx > 2 * size.width / 3 && dy > 2 * size.height / 3) {
+        } else if (isRight && !isTop) {
           prev();
-        } else {
-          setState(() => showMenu = true);
         }
       },
+      onDoubleTap: toggleMenu,
+      onLongPress: toggleMenu,
       child: Stack(
         children: [
-          Positioned.fill(
-            child: Image.asset(image, fit: BoxFit.cover),
-          ),
-          if (showMenu)
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: const Text('Fin du test'),
-                  ),
-                  const SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: () => setState(() => showMenu = false),
-                    child: const Text('Fermer le menu'),
-                  ),
-                ],
-              ),
-            ),
+          Positioned.fill(child: Image.asset(image, fit: BoxFit.cover)),
+          if (showMenu) ...[
+            _buildOverlayZones(context),
+            _buildMenuButtons(context),
+          ],
         ],
       ),
+    );
+  }
+
+  Widget _buildOverlayZones(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final thirdWidth = size.width / 3;
+    final halfHeight = size.height / 2;
+
+    return IgnorePointer(
+      child: Stack(
+        children: [
+          _zoneOverlay(0, 0, thirdWidth, halfHeight, "⟵ Précédent"),
+          _zoneOverlay(0, halfHeight, thirdWidth, halfHeight, "⟶ Suivant"),
+          _zoneOverlay(thirdWidth * 2, 0, thirdWidth, halfHeight, "⟶ Suivant"),
+          _zoneOverlay(
+            thirdWidth * 2,
+            halfHeight,
+            thirdWidth,
+            halfHeight,
+            "⟵ Précédent",
+          ),
+          _zoneOverlay(thirdWidth, 0, thirdWidth, size.height, "☰ Menu"),
+        ],
+      ),
+    );
+  }
+
+  Widget _zoneOverlay(
+    double left,
+    double top,
+    double width,
+    double height,
+    String label,
+  ) {
+    return Positioned(
+      left: left,
+      top: top,
+      width: width,
+      height: height,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.black87,
+          border: Border.all(color: Colors.white60, width: 1),
+        ),
+        child: Center(
+          child: Text(
+            label,
+            style: const TextStyle(color: Colors.white, fontSize: 25),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMenuButtons(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    final horizontalMargin = size.width * 0.4;
+
+    return Stack(
+      children: [
+        // Bouton Terminer
+        Positioned(
+          top: size.height * 0.15,
+          left: horizontalMargin,
+          right: horizontalMargin,
+          child: ElevatedButton.icon(
+            icon: const Icon(Icons.stop_circle, size: 32),
+            label: const Text(
+              "Terminer le test",
+              style: TextStyle(fontSize: 20),
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.redAccent,
+              padding: const EdgeInsets.symmetric(vertical: 40),
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ),
+        // Bouton Fermer menu
+        Positioned(
+          top: size.height * 0.45,
+          left: horizontalMargin,
+          right: horizontalMargin,
+          child: ElevatedButton.icon(
+            icon: const Icon(Icons.close, size: 28),
+            label: const Text("Fermer le menu", style: TextStyle(fontSize: 20)),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blueGrey,
+              padding: const EdgeInsets.symmetric(vertical: 40),
+            ),
+            onPressed: toggleMenu,
+          ),
+        ),
+      ],
     );
   }
 }
