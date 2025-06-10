@@ -1,13 +1,36 @@
 [
   {
-    "name": "Groupe A",
+    "name": "Fruits",
     "subGroups": [
       {
-        "name": "Sous-groupe A1",
+        "name": "Fruits - Ensemble 1",
         "tests": [
           {
-            "name": "Test A1-1",
-            "images": ["assets/images/img1.jpg", "assets/images/img2.jpg"]
+            "name": "Fruits Test 1",
+            "images": [
+              "assets/images/Fruits/pommes.jpg",
+              "assets/images/Fruits/bananes.jpg",
+              "assets/images/Fruits/fraises.jpg",
+              "assets/images/Fruits/oranges.jpg"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Personnalites",
+    "subGroups": [
+      {
+        "name": "Personnalites - Ensemble 1",
+        "tests": [
+          {
+            "name": "Personnalites Test 1",
+            "images": [
+              "assets/images/Personnalites/einstein.jpg",
+              "assets/images/Personnalites/obama.jpg",
+              "assets/images/Personnalites/elon.jpg"
+            ]
           }
         ]
       }
