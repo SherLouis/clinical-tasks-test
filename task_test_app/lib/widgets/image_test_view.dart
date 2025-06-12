@@ -77,13 +77,9 @@ class _ImageTestViewState extends State<ImageTestView>
 
         if (isCenter) {
           toggleMenu();
-        } else if (isLeft && isTop) {
-          prev();
-        } else if (isLeft && !isTop) {
+        } else if (isTop) {
           next();
-        } else if (isRight && isTop) {
-          next();
-        } else if (isRight && !isTop) {
+        } else {
           prev();
         }
       },
@@ -135,8 +131,8 @@ class _ImageTestViewState extends State<ImageTestView>
     return IgnorePointer(
       child: Stack(
         children: [
-          _zoneOverlay(0, 0, thirdWidth, halfHeight, "⟵ Précédent"),
-          _zoneOverlay(0, halfHeight, thirdWidth, halfHeight, "⟶ Suivant"),
+          _zoneOverlay(0, 0, thirdWidth, halfHeight, "⟶ Suivant"),
+          _zoneOverlay(0, halfHeight, thirdWidth, halfHeight, "⟵ Précédent"),
           _zoneOverlay(thirdWidth * 2, 0, thirdWidth, halfHeight, "⟶ Suivant"),
           _zoneOverlay(
             thirdWidth * 2,
