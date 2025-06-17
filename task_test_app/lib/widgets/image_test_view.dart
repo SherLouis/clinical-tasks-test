@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:task_test_app/utils/app_sizes.dart';
+
 class ImageTestView extends StatefulWidget {
   final List<String> images;
 
@@ -90,7 +92,7 @@ class _ImageTestViewState extends State<ImageTestView>
           Center(
             child: SizedBox.expand(
               key: ValueKey<String>(image),
-              child: Image.asset(image, fit: BoxFit.cover),
+              child: Image.asset(image, fit: BoxFit.contain),
             ),
           ),
           Positioned(
@@ -131,17 +133,39 @@ class _ImageTestViewState extends State<ImageTestView>
     return IgnorePointer(
       child: Stack(
         children: [
-          _zoneOverlay(0, 0, thirdWidth, halfHeight, "⟶ Suivant"),
-          _zoneOverlay(0, halfHeight, thirdWidth, halfHeight, "⟵ Précédent"),
-          _zoneOverlay(thirdWidth * 2, 0, thirdWidth, halfHeight, "⟶ Suivant"),
+          _zoneOverlay(0, 0, thirdWidth, halfHeight, "⟶ Suivant", context),
+          _zoneOverlay(
+            0,
+            halfHeight,
+            thirdWidth,
+            halfHeight,
+            "⟵ Précédent",
+            context,
+          ),
+          _zoneOverlay(
+            thirdWidth * 2,
+            0,
+            thirdWidth,
+            halfHeight,
+            "⟶ Suivant",
+            context,
+          ),
           _zoneOverlay(
             thirdWidth * 2,
             halfHeight,
             thirdWidth,
             halfHeight,
             "⟵ Précédent",
+            context,
           ),
-          _zoneOverlay(thirdWidth, 0, thirdWidth, size.height, "☰ Menu"),
+          _zoneOverlay(
+            thirdWidth,
+            0,
+            thirdWidth,
+            size.height,
+            "☰ Menu",
+            context,
+          ),
         ],
       ),
     );
@@ -153,6 +177,7 @@ class _ImageTestViewState extends State<ImageTestView>
     double width,
     double height,
     String label,
+    BuildContext context,
   ) {
     return Positioned(
       left: left,
@@ -167,7 +192,10 @@ class _ImageTestViewState extends State<ImageTestView>
         child: Center(
           child: Text(
             label,
-            style: const TextStyle(color: Colors.white, fontSize: 25),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: AppSizes.fontSize(context),
+            ),
           ),
         ),
       ),
@@ -179,6 +207,8 @@ class _ImageTestViewState extends State<ImageTestView>
 
     final horizontalMargin = size.width * 0.4;
 
+    final buttonPadding = AppSizes.isSmall(context) ? 28.0 : 40.0;
+
     return Stack(
       children: [
         // Bouton Terminer
@@ -187,29 +217,32 @@ class _ImageTestViewState extends State<ImageTestView>
           left: horizontalMargin,
           right: horizontalMargin,
           child: ElevatedButton.icon(
-            icon: const Icon(Icons.stop_circle, size: 32),
-            label: const Text(
+            icon: Icon(Icons.stop_circle, size: AppSizes.iconSize(context)),
+            label: Text(
               "Terminer le test",
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: AppSizes.fontSize(context)),
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.redAccent,
-              padding: const EdgeInsets.symmetric(vertical: 40),
+              padding: EdgeInsets.symmetric(vertical: buttonPadding),
             ),
             onPressed: () => Navigator.pop(context),
           ),
         ),
         // Bouton Fermer menu
         Positioned(
-          top: size.height * 0.45,
+          bottom: size.height * 0.15,
           left: horizontalMargin,
           right: horizontalMargin,
           child: ElevatedButton.icon(
-            icon: const Icon(Icons.close, size: 28),
-            label: const Text("Fermer le menu", style: TextStyle(fontSize: 20)),
+            icon: Icon(Icons.close, size: AppSizes.iconSize(context)),
+            label: Text(
+              "Fermer le menu",
+              style: TextStyle(fontSize: AppSizes.fontSize(context)),
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blueGrey,
-              padding: const EdgeInsets.symmetric(vertical: 40),
+              padding: EdgeInsets.symmetric(vertical: buttonPadding),
             ),
             onPressed: toggleMenu,
           ),
