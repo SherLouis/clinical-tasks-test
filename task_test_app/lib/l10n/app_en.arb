@@ -1,0 +1,13 @@
+{
+  "@@locale": "en",
+  "appTitle": "Task Test App",
+  "homeScreenTitle": "Home",
+  "startNewTest": "New test",
+  "startNewSession": "New session",
+  "chooseTest" : "Choose a test",
+  "endTest": "End test",
+  "closeMenu": "Close menu",
+  "previous": "Previous",
+  "next": "Next",
+  "showMenu": "Show menu"
+}

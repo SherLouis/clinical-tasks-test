@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_test_app/l10n/app_localizations.dart';
 import 'package:task_test_app/utils/app_sizes.dart';
 import 'package:task_test_app/data/data_loader.dart';
 import 'package:task_test_app/models/test_model.dart';
@@ -25,7 +26,7 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Choisir un test')),
+      appBar: AppBar(title: Text(AppLocalizations.of(context)!.chooseTest)),
       body: Row(
         children: [
           Expanded(

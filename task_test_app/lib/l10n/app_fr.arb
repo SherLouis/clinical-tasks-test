@@ -1,0 +1,13 @@
+{
+  "@@locale": "fr",
+  "appTitle": "Testeur de tâches",
+  "homeScreenTitle": "Accueil",
+  "startNewTest": "Nouveau test",
+  "startNewSession": "Nouvelle session",
+  "chooseTest" : "Choisir un test",
+  "endTest": "Terminer le test",
+  "closeMenu": "Fermer le menu",
+  "previous": "Précédent",
+  "next": "Suivant",
+  "showMenu": "Afficher le menu"
+}

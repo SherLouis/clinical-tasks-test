@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_test_app/l10n/app_localizations.dart';
 
 import 'package:task_test_app/utils/app_sizes.dart';
 
@@ -133,13 +134,13 @@ class _ImageTestViewState extends State<ImageTestView>
     return IgnorePointer(
       child: Stack(
         children: [
-          _zoneOverlay(0, 0, thirdWidth, halfHeight, "⟶ Suivant", context),
+          _zoneOverlay(0, 0, thirdWidth, halfHeight, "⟶ ${AppLocalizations.of(context)!.next}", context),
           _zoneOverlay(
             0,
             halfHeight,
             thirdWidth,
             halfHeight,
-            "⟵ Précédent",
+            "⟵ ${AppLocalizations.of(context)!.previous}",
             context,
           ),
           _zoneOverlay(
@@ -147,7 +148,7 @@ class _ImageTestViewState extends State<ImageTestView>
             0,
             thirdWidth,
             halfHeight,
-            "⟶ Suivant",
+            "⟶ ${AppLocalizations.of(context)!.next}",
             context,
           ),
           _zoneOverlay(
@@ -155,7 +156,7 @@ class _ImageTestViewState extends State<ImageTestView>
             halfHeight,
             thirdWidth,
             halfHeight,
-            "⟵ Précédent",
+            "⟵ ${AppLocalizations.of(context)!.previous}",
             context,
           ),
           _zoneOverlay(
@@ -163,7 +164,7 @@ class _ImageTestViewState extends State<ImageTestView>
             0,
             thirdWidth,
             size.height,
-            "☰ Menu",
+            "☰ ${AppLocalizations.of(context)!.showMenu}",
             context,
           ),
         ],
@@ -219,7 +220,7 @@ class _ImageTestViewState extends State<ImageTestView>
           child: ElevatedButton.icon(
             icon: Icon(Icons.stop_circle, size: AppSizes.iconSize(context)),
             label: Text(
-              "Terminer le test",
+              AppLocalizations.of(context)!.endTest,
               style: TextStyle(fontSize: AppSizes.fontSize(context)),
             ),
             style: ElevatedButton.styleFrom(
@@ -237,7 +238,7 @@ class _ImageTestViewState extends State<ImageTestView>
           child: ElevatedButton.icon(
             icon: Icon(Icons.close, size: AppSizes.iconSize(context)),
             label: Text(
-              "Fermer le menu",
+              AppLocalizations.of(context)!.closeMenu,
               style: TextStyle(fontSize: AppSizes.fontSize(context)),
             ),
             style: ElevatedButton.styleFrom(

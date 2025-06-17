@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_test_app/l10n/app_localizations.dart';
 import 'package:task_test_app/utils/app_sizes.dart';
 import 'test_selection_screen.dart';
 
@@ -10,7 +11,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Accueil',
+          AppLocalizations.of(context)!.homeScreenTitle,
           style: TextStyle(fontSize: AppSizes.fontSize(context)),
         ),
       ),
@@ -24,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                 MaterialPageRoute(builder: (_) => const TestSelectionScreen()),
               ),
               child: Text(
-                'Nouveau test',
+                AppLocalizations.of(context)!.startNewTest,
                 style: TextStyle(fontSize: AppSizes.fontSize(context)),
               ),
             ),
@@ -34,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                 // Future: gestion de session
               },
               child: Text(
-                'Nouvelle session',
+                AppLocalizations.of(context)!.startNewSession,
                 style: TextStyle(fontSize: AppSizes.fontSize(context)),
               ),
             ),
