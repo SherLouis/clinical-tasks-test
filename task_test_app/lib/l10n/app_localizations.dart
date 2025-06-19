@@ -154,6 +154,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Show menu'**
   String get showMenu;
+
+  /// No description provided for @session_enterIdSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a session identifier.'**
+  String get session_enterIdSnack;
+
+  /// No description provided for @session_enterIdLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a session identifier : '**
+  String get session_enterIdLabel;
+
+  /// No description provided for @session_startPreTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Start pre-test'**
+  String get session_startPreTest;
+
+  /// No description provided for @session_startTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Start test'**
+  String get session_startTest;
+
+  /// No description provided for @skipImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip image'**
+  String get skipImage;
+
+  /// No description provided for @testComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Test complete'**
+  String get testComplete;
+
+  /// No description provided for @noMoreImages.
+  ///
+  /// In en, this message translates to:
+  /// **'There are no more images to display.'**
+  String get noMoreImages;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
+  /// No description provided for @goBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get goBack;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

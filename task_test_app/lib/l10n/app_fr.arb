@@ -9,5 +9,14 @@
   "closeMenu": "Fermer le menu",
   "previous": "Précédent",
   "next": "Suivant",
-  "showMenu": "Afficher le menu"
+  "showMenu": "Afficher le menu",
+  "session_enterIdSnack": "Veuillez saisir un identifiant de session.",
+  "session_enterIdLabel": "Entrez un identifiant de session :",
+  "session_startPreTest" : "Démarrer un pré-test",
+  "session_startTest" : "Démarrer un test",
+  "skipImage" : "Passer l'image",
+  "testComplete" : "Test terminé",
+  "noMoreImages" : "Il n'y a plus d'image à afficher.",
+  "ok" : "OK",
+  "goBack" : "Retour"
 }

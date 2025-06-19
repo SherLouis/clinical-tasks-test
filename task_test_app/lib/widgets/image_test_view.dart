@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_test_app/l10n/app_localizations.dart';
+import 'package:task_test_app/services/session_manager.dart';
 
 import 'package:task_test_app/utils/app_sizes.dart';
 
@@ -16,16 +17,18 @@ class _ImageTestViewState extends State<ImageTestView>
     with SingleTickerProviderStateMixin {
   int index = 0;
   bool showMenu = false;
+  late List<String> filteredImages;
+
   late final AnimationController _menuController;
   late final Animation<Offset> _slideAnimation;
 
   void next() {
-    setState(() => index = (index + 1) % widget.images.length);
+    setState(() => index = (index + 1) % filteredImages.length);
   }
 
   void prev() {
     setState(
-      () => index = (index - 1 + widget.images.length) % widget.images.length,
+      () => index = (index - 1 + filteredImages.length) % filteredImages.length,
     );
   }
 
@@ -40,9 +43,48 @@ class _ImageTestViewState extends State<ImageTestView>
     });
   }
 
+  void skipImage() {
+    final imagePath = filteredImages[index];
+    SessionManager().skipImage(imagePath);
+    setState(() {
+      filteredImages.removeAt(index);
+      if (filteredImages.isEmpty) {
+        showDialogNoImages();
+        return;
+      }
+      if (index >= filteredImages.length) {
+        index = 0;
+      }
+    });
+    toggleMenu();
+  }
+
+  void showDialogNoImages() {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text(AppLocalizations.of(context)!.testComplete),
+        content: Text(AppLocalizations.of(context)!.noMoreImages),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(AppLocalizations.of(context)!.ok),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
+    if (SessionManager().hasActiveSession) {
+      filteredImages = widget.images
+          .where((image) => !SessionManager().isImageSkipped(image))
+          .toList();
+    } else {
+      filteredImages = widget.images;
+    }
     _menuController = AnimationController(
       duration: const Duration(milliseconds: 300),
       vsync: this,
@@ -62,7 +104,37 @@ class _ImageTestViewState extends State<ImageTestView>
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final image = widget.images[index];
+
+    if (filteredImages.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(title: Text(AppLocalizations.of(context)!.testComplete)),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.check_circle_outline, size: AppSizes.iconSize(context), color: Colors.green),
+              const SizedBox(height: 24),
+              Text(
+                AppLocalizations.of(context)!.noMoreImages,
+                style: TextStyle(fontSize: AppSizes.fontSize(context)),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 32),
+              ElevatedButton.icon(
+                icon: const Icon(Icons.arrow_back),
+                label: Text(
+                  AppLocalizations.of(context)!.goBack,
+                  style: TextStyle(fontSize: AppSizes.fontSize(context)),
+                ),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    final image = filteredImages[index];
 
     return GestureDetector(
       onTapUp: (details) {
@@ -101,7 +173,7 @@ class _ImageTestViewState extends State<ImageTestView>
             left: 0,
             right: 0,
             child: LinearProgressIndicator(
-              value: (index + 1) / widget.images.length,
+              value: (index + 1) / filteredImages.length,
               backgroundColor: Colors.black26,
               valueColor: AlwaysStoppedAnimation<Color>(Colors.lightBlueAccent),
               minHeight: 4,
@@ -134,7 +206,14 @@ class _ImageTestViewState extends State<ImageTestView>
     return IgnorePointer(
       child: Stack(
         children: [
-          _zoneOverlay(0, 0, thirdWidth, halfHeight, "⟶ ${AppLocalizations.of(context)!.next}", context),
+          _zoneOverlay(
+            0,
+            0,
+            thirdWidth,
+            halfHeight,
+            "⟶ ${AppLocalizations.of(context)!.next}",
+            context,
+          ),
           _zoneOverlay(
             0,
             halfHeight,
@@ -214,9 +293,10 @@ class _ImageTestViewState extends State<ImageTestView>
       children: [
         // Bouton Terminer
         Positioned(
-          top: size.height * 0.15,
+          top: size.height * 0.10,
           left: horizontalMargin,
           right: horizontalMargin,
+          height: size.height * 0.20,
           child: ElevatedButton.icon(
             icon: Icon(Icons.stop_circle, size: AppSizes.iconSize(context)),
             label: Text(
@@ -232,9 +312,10 @@ class _ImageTestViewState extends State<ImageTestView>
         ),
         // Bouton Fermer menu
         Positioned(
-          bottom: size.height * 0.15,
+          top: size.height * 0.40,
           left: horizontalMargin,
           right: horizontalMargin,
+          height: size.height * 0.20,
           child: ElevatedButton.icon(
             icon: Icon(Icons.close, size: AppSizes.iconSize(context)),
             label: Text(
@@ -248,6 +329,35 @@ class _ImageTestViewState extends State<ImageTestView>
             onPressed: toggleMenu,
           ),
         ),
+        // Bouton skip image
+        if (SessionManager().hasActiveSession) ...[
+          Positioned(
+            top: size.height * 0.70,
+            left: horizontalMargin,
+            right: horizontalMargin,
+            height: size.height * 0.20,
+            child: ElevatedButton.icon(
+              icon: Icon(
+                Icons.skip_next,
+                size: AppSizes.iconSize(context),
+                color: Colors.orange,
+              ),
+              label: Text(
+                AppLocalizations.of(context)!.skipImage,
+                style: TextStyle(
+                  fontSize: AppSizes.fontSize(context),
+                  color: Colors.orange,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueGrey,
+                padding: EdgeInsets.symmetric(vertical: buttonPadding),
+              ),
+              onPressed: skipImage,
+            ),
+          ),
+        ],
       ],
     );
   }

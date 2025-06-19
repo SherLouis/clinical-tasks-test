@@ -9,5 +9,14 @@
   "closeMenu": "Close menu",
   "previous": "Previous",
   "next": "Next",
-  "showMenu": "Show menu"
+  "showMenu": "Show menu",
+  "session_enterIdSnack": "Please enter a session identifier.",
+  "session_enterIdLabel": "Enter a session identifier : ",
+  "session_startPreTest" : "Start pre-test",
+  "session_startTest" : "Start test",
+  "skipImage" : "Skip image",
+  "testComplete" : "Test complete",
+  "noMoreImages" : "There are no more images to display.",
+  "ok" : "OK",
+  "goBack" : "Back"
 }

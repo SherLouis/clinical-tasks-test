@@ -37,4 +37,31 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get showMenu => 'Afficher le menu';
+
+  @override
+  String get session_enterIdSnack => 'Veuillez saisir un identifiant de session.';
+
+  @override
+  String get session_enterIdLabel => 'Entrez un identifiant de session :';
+
+  @override
+  String get session_startPreTest => 'Démarrer un pré-test';
+
+  @override
+  String get session_startTest => 'Démarrer un test';
+
+  @override
+  String get skipImage => 'Passer l\'image';
+
+  @override
+  String get testComplete => 'Test terminé';
+
+  @override
+  String get noMoreImages => 'Il n\'y a plus d\'image à afficher.';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get goBack => 'Retour';
 }

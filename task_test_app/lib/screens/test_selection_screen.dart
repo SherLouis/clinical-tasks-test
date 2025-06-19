@@ -6,7 +6,14 @@ import 'package:task_test_app/models/test_model.dart';
 import 'test_execution_screen.dart';
 
 class TestSelectionScreen extends StatefulWidget {
-  const TestSelectionScreen({super.key});
+  final bool isSession;
+  final bool isPreTest;
+
+  const TestSelectionScreen({
+    super.key,
+    this.isSession = false,
+    this.isPreTest = false,
+  });
 
   @override
   State<TestSelectionScreen> createState() => _TestSelectionScreenState();
