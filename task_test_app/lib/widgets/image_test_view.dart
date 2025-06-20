@@ -17,7 +17,7 @@ class ImageTestView extends StatefulWidget {
     required this.groupName,
     required this.subGroupName,
     required this.testName,
-    required this.isPreTest
+    required this.isPreTest,
   });
 
   @override
@@ -76,6 +76,17 @@ class _ImageTestViewState extends State<ImageTestView>
     toggleMenu();
   }
 
+  void quitTest() {
+    if (SessionManager().hasActiveSession && !widget.isPreTest) {
+      SessionManager().addCompletedTest(
+        widget.groupName,
+        widget.subGroupName,
+        widget.testName,
+      );
+    }
+    Navigator.pop(context);
+  }
+
   void showDialogNoImages() {
     showDialog(
       context: context,
@@ -97,7 +108,14 @@ class _ImageTestViewState extends State<ImageTestView>
     super.initState();
     if (SessionManager().hasActiveSession) {
       filteredImages = widget.images
-          .where((image) => !SessionManager().isImageSkipped(widget.groupName, widget.subGroupName, widget.testName, image))
+          .where(
+            (image) => !SessionManager().isImageSkipped(
+              widget.groupName,
+              widget.subGroupName,
+              widget.testName,
+              image,
+            ),
+          )
           .toList();
     } else {
       filteredImages = widget.images;
@@ -328,7 +346,7 @@ class _ImageTestViewState extends State<ImageTestView>
               backgroundColor: Colors.redAccent,
               padding: EdgeInsets.symmetric(vertical: buttonPadding),
             ),
-            onPressed: () => Navigator.pop(context),
+            onPressed: quitTest,
           ),
         ),
         // Bouton Fermer menu

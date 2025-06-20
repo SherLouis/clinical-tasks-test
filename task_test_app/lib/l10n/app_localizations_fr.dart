@@ -107,4 +107,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get cancel => 'Annuler';
+
+  @override
+  String get testHistory => 'Historique des tests';
+
+  @override
+  String get noCompletedTest => 'Aucun test complété pour cette session';
 }

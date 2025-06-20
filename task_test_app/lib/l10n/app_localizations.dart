@@ -286,6 +286,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cancel'**
   String get cancel;
+
+  /// No description provided for @testHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Test history'**
+  String get testHistory;
+
+  /// No description provided for @noCompletedTest.
+  ///
+  /// In en, this message translates to:
+  /// **'No completed tests for this session'**
+  String get noCompletedTest;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
