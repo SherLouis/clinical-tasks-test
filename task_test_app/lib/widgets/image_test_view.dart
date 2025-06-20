@@ -6,8 +6,19 @@ import 'package:task_test_app/utils/app_sizes.dart';
 
 class ImageTestView extends StatefulWidget {
   final List<String> images;
+  final String groupName;
+  final String subGroupName;
+  final String testName;
+  final bool isPreTest;
 
-  const ImageTestView({super.key, required this.images});
+  const ImageTestView({
+    super.key,
+    required this.images,
+    required this.groupName,
+    required this.subGroupName,
+    required this.testName,
+    required this.isPreTest
+  });
 
   @override
   State<ImageTestView> createState() => _ImageTestViewState();
@@ -45,7 +56,13 @@ class _ImageTestViewState extends State<ImageTestView>
 
   void skipImage() {
     final imagePath = filteredImages[index];
-    SessionManager().skipImage(imagePath);
+    SessionManager().skipImage(
+      widget.groupName,
+      widget.subGroupName,
+      widget.testName,
+      imagePath,
+    );
+
     setState(() {
       filteredImages.removeAt(index);
       if (filteredImages.isEmpty) {
@@ -80,7 +97,7 @@ class _ImageTestViewState extends State<ImageTestView>
     super.initState();
     if (SessionManager().hasActiveSession) {
       filteredImages = widget.images
-          .where((image) => !SessionManager().isImageSkipped(image))
+          .where((image) => !SessionManager().isImageSkipped(widget.groupName, widget.subGroupName, widget.testName, image))
           .toList();
     } else {
       filteredImages = widget.images;
@@ -112,7 +129,11 @@ class _ImageTestViewState extends State<ImageTestView>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.check_circle_outline, size: AppSizes.iconSize(context), color: Colors.green),
+              Icon(
+                Icons.check_circle_outline,
+                size: AppSizes.iconSize(context),
+                color: Colors.green,
+              ),
               const SizedBox(height: 24),
               Text(
                 AppLocalizations.of(context)!.noMoreImages,

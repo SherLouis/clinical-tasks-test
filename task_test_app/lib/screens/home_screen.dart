@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_test_app/l10n/app_localizations.dart';
+import 'package:task_test_app/screens/session_select_screen.dart';
 import 'package:task_test_app/screens/session_start_screen.dart';
 import 'package:task_test_app/utils/app_sizes.dart';
 import 'test_selection_screen.dart';
@@ -35,7 +36,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const SessionStartScreen()),
+                  MaterialPageRoute(builder: (_) => const SessionSelectScreen()),
                 );
               },
               child: Text(

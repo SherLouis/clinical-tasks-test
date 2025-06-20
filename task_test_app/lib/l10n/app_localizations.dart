@@ -155,17 +155,65 @@ abstract class AppLocalizations {
   /// **'Show menu'**
   String get showMenu;
 
-  /// No description provided for @session_enterIdSnack.
+  /// No description provided for @selectSession.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a session'**
+  String get selectSession;
+
+  /// No description provided for @existingSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Existing sessions'**
+  String get existingSessions;
+
+  /// No description provided for @noSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'No sessions found.'**
+  String get noSessions;
+
+  /// No description provided for @createSession.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a new session'**
+  String get createSession;
+
+  /// No description provided for @create.
+  ///
+  /// In en, this message translates to:
+  /// **'Create'**
+  String get create;
+
+  /// No description provided for @session_idRequired.
   ///
   /// In en, this message translates to:
   /// **'Please enter a session identifier.'**
-  String get session_enterIdSnack;
+  String get session_idRequired;
+
+  /// No description provided for @session_idAlreadyExists.
+  ///
+  /// In en, this message translates to:
+  /// **'This session ID already exists.'**
+  String get session_idAlreadyExists;
 
   /// No description provided for @session_enterIdLabel.
   ///
   /// In en, this message translates to:
   /// **'Enter a session identifier : '**
   String get session_enterIdLabel;
+
+  /// No description provided for @session_selectTestMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Select test mode'**
+  String get session_selectTestMode;
+
+  /// No description provided for @sessionInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Session \"{id}\" in progress'**
+  String sessionInProgress(Object id);
 
   /// No description provided for @session_startPreTest.
   ///
@@ -178,6 +226,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Start test'**
   String get session_startTest;
+
+  /// No description provided for @deleteSession.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete session'**
+  String get deleteSession;
+
+  /// No description provided for @confirmDeleteSession.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you really want to delete session « {id} » ?'**
+  String confirmDeleteSession(Object id);
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
 
   /// No description provided for @skipImage.
   ///
@@ -208,6 +274,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back'**
   String get goBack;
+
+  /// No description provided for @created.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get created;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

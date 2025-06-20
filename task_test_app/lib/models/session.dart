@@ -1,9 +1,19 @@
 class SessionData {
   final String sessionId;
-  final Set<String> skippedImages = {};
+  final DateTime createdAt = DateTime.now();
+  final Map<String, Set<String>> skippedImagesByTest;
+
   final List<CompletedTest> completedTests = [];
 
-  SessionData({required this.sessionId});
+  SessionData({required this.sessionId}) : skippedImagesByTest = {};
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SessionData && sessionId == other.sessionId;
+
+  @override
+  int get hashCode => sessionId.hashCode;
 }
 
 class CompletedTest {

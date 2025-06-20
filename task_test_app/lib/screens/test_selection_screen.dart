@@ -91,7 +91,12 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) => TestExecutionScreen(test: t),
+                                builder: (_) => TestExecutionScreen(
+                                  test: t,
+                                  groupName: selectedGroup!.name,
+                                  subGroupName: selectedSubGroup!.name,
+                                  isPreTest: widget.isPreTest,
+                                ),
                               ),
                             );
                           },

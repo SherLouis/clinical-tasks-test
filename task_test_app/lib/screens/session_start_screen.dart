@@ -21,7 +21,7 @@ class _SessionStartScreenState extends State<SessionStartScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            AppLocalizations.of(context)!.session_enterIdSnack,
+            AppLocalizations.of(context)!.session_idRequired,
             style: TextStyle(
               fontSize: AppSizes.fontSize(context),
               color: Colors.white,

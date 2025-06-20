@@ -39,16 +39,53 @@ class AppLocalizationsFr extends AppLocalizations {
   String get showMenu => 'Afficher le menu';
 
   @override
-  String get session_enterIdSnack => 'Veuillez saisir un identifiant de session.';
+  String get selectSession => 'Choisir une session';
+
+  @override
+  String get existingSessions => 'Sessions existantes';
+
+  @override
+  String get noSessions => 'Aucune session trouvée.';
+
+  @override
+  String get createSession => 'Créer une nouvelle session';
+
+  @override
+  String get create => 'Créer';
+
+  @override
+  String get session_idRequired => 'Veuillez saisir un identifiant de session.';
+
+  @override
+  String get session_idAlreadyExists => 'Cet identifiant existe déjà.';
 
   @override
   String get session_enterIdLabel => 'Entrez un identifiant de session :';
+
+  @override
+  String get session_selectTestMode => 'Select test mode';
+
+  @override
+  String sessionInProgress(Object id) {
+    return 'Session « $id » en cours';
+  }
 
   @override
   String get session_startPreTest => 'Démarrer un pré-test';
 
   @override
   String get session_startTest => 'Démarrer un test';
+
+  @override
+  String get deleteSession => 'Supprimer la session';
+
+  @override
+  String confirmDeleteSession(Object id) {
+    return 'Voulez-vous vraiment supprimer la session « $id » ?';
+  }
+
+  @override
+  String get delete => 'Supprimer';
 
   @override
   String get skipImage => 'Passer l\'image';
@@ -64,4 +101,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get goBack => 'Retour';
+
+  @override
+  String get created => 'Créé';
+
+  @override
+  String get cancel => 'Annuler';
 }

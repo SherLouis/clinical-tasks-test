@@ -39,16 +39,53 @@ class AppLocalizationsEn extends AppLocalizations {
   String get showMenu => 'Show menu';
 
   @override
-  String get session_enterIdSnack => 'Please enter a session identifier.';
+  String get selectSession => 'Select a session';
+
+  @override
+  String get existingSessions => 'Existing sessions';
+
+  @override
+  String get noSessions => 'No sessions found.';
+
+  @override
+  String get createSession => 'Create a new session';
+
+  @override
+  String get create => 'Create';
+
+  @override
+  String get session_idRequired => 'Please enter a session identifier.';
+
+  @override
+  String get session_idAlreadyExists => 'This session ID already exists.';
 
   @override
   String get session_enterIdLabel => 'Enter a session identifier : ';
+
+  @override
+  String get session_selectTestMode => 'Select test mode';
+
+  @override
+  String sessionInProgress(Object id) {
+    return 'Session \"$id\" in progress';
+  }
 
   @override
   String get session_startPreTest => 'Start pre-test';
 
   @override
   String get session_startTest => 'Start test';
+
+  @override
+  String get deleteSession => 'Delete session';
+
+  @override
+  String confirmDeleteSession(Object id) {
+    return 'Do you really want to delete session « $id » ?';
+  }
+
+  @override
+  String get delete => 'Delete';
 
   @override
   String get skipImage => 'Skip image';
@@ -64,4 +101,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get goBack => 'Back';
+
+  @override
+  String get created => 'Created';
+
+  @override
+  String get cancel => 'Cancel';
 }
