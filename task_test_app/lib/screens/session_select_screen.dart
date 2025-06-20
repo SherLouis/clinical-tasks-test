@@ -36,7 +36,7 @@ class _SessionSelectScreenState extends State<SessionSelectScreen> {
         title: Text(t.createSession),
         content: TextField(
           controller: controller,
-          decoration: InputDecoration(hintText: 'ex: participant‑001'),
+          decoration: InputDecoration(hintText: 'ex: session-001'),
           textAlign: TextAlign.center,
         ),
         actions: [

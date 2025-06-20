@@ -11,10 +11,8 @@ class SessionModeScreen extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => TestSelectionScreen(
-          isSession: true,
-          isPreTest: isPreTest,
-        ),
+        builder: (_) =>
+            TestSelectionScreen(isSession: true, isPreTest: isPreTest),
       ),
     );
   }
@@ -23,32 +21,34 @@ class SessionModeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: Text(t.session_selectTestMode)),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(t.sessionInProgress(SessionManager().currentSessionId!),
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () => _startTest(context, isPreTest: true),
-              child: Text(
-                t.session_startPreTest,
-                style: TextStyle(fontSize: AppSizes.fontSize(context)),
+      appBar: AppBar(
+        title: Text(
+          '${t.session_selectTestMode} (${SessionManager().currentSessionId!})',
+        ),
+      ),
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 400),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () => _startTest(context, isPreTest: true),
+                child: Text(
+                  t.session_startPreTest,
+                  style: TextStyle(fontSize: AppSizes.fontSize(context)),
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () => _startTest(context, isPreTest: false),
-              child: Text(
-                t.session_startTest,
-                style: TextStyle(fontSize: AppSizes.fontSize(context)),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () => _startTest(context, isPreTest: false),
+                child: Text(
+                  t.session_startTest,
+                  style: TextStyle(fontSize: AppSizes.fontSize(context)),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

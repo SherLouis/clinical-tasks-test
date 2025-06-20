@@ -18,7 +18,7 @@
   "session_idRequired": "Veuillez saisir un identifiant de session.",
   "session_idAlreadyExists" : "Cet identifiant existe déjà.",
   "session_enterIdLabel": "Entrez un identifiant de session :",
-  "selectTestMode": "Sélectionner le mode de test",
+  "session_selectTestMode": "Sélectionner le mode de test",
   "sessionInProgress": "Session « {id} » en cours",
   "session_startPreTest" : "Démarrer un pré-test",
   "session_startTest" : "Démarrer un test",
