@@ -1,39 +1,42 @@
-[
-  {
-    "name": "Fruits",
-    "subGroups": [
-      {
-        "name": "Fruits - Ensemble 1",
-        "tests": [
-          {
-            "name": "Fruits Test 1",
-            "images": [
-              "assets/images/Fruits/pommes.jpg",
-              "assets/images/Fruits/bananes.jpg",
-              "assets/images/Fruits/fraises.jpg",
-              "assets/images/Fruits/oranges.jpg"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Personnalites",
-    "subGroups": [
-      {
-        "name": "Personnalites - Ensemble 1",
-        "tests": [
-          {
-            "name": "Personnalites Test 1",
-            "images": [
-              "assets/images/Personnalites/einstein.jpg",
-              "assets/images/Personnalites/obama.jpg",
-              "assets/images/Personnalites/elon.jpg"
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
+{
+  "version": 20250630,
+  "groups": [
+    {
+      "name": "Fruits",
+      "subGroups": [
+        {
+          "name": "Fruits - Ensemble 1",
+          "tests": [
+            {
+              "name": "Fruits Test 1",
+              "images": [
+                "Fruits/pommes.jpg",
+                "Fruits/bananes.jpg",
+                "Fruits/fraises.jpg",
+                "Fruits/oranges.jpg"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Personnalites",
+      "subGroups": [
+        {
+          "name": "Personnalites - Ensemble 1",
+          "tests": [
+            {
+              "name": "Personnalites Test 1",
+              "images": [
+                "Personnalites/einstein.jpg",
+                "Personnalites/obama.jpg",
+                "Personnalites/elon.jpg"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
