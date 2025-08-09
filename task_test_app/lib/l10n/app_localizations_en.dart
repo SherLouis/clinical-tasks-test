@@ -106,6 +106,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get created => 'Created';
 
   @override
+  String get restore => 'Reset';
+
+  @override
   String get cancel => 'Cancel';
 
   @override

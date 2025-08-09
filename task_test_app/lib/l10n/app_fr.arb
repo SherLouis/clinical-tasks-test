@@ -31,6 +31,7 @@
   "ok" : "OK",
   "goBack" : "Retour",
   "created" : "Créé",
+  "restore" : "Restaurer",
   "cancel" : "Annuler",
   "testHistory": "Historique des tests",
   "noCompletedTest": "Aucun test complété pour cette session"

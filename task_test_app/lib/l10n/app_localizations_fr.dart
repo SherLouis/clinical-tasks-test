@@ -106,6 +106,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get created => 'Créé';
 
   @override
+  String get restore => 'Restaurer';
+
+  @override
   String get cancel => 'Annuler';
 
   @override

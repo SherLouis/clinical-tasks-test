@@ -62,6 +62,10 @@ class SessionManager {
         false;
   }
 
+  void restoreSkippedImages(String group, String test) {
+    _currentSession?.skippedImagesByTest.clear();
+  }
+
   void addCompletedTest(String group, String test) {
     if (_currentSession == null) return;
 

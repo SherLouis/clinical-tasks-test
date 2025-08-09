@@ -281,6 +281,12 @@ abstract class AppLocalizations {
   /// **'Created'**
   String get created;
 
+  /// No description provided for @restore.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get restore;
+
   /// No description provided for @cancel.
   ///
   /// In en, this message translates to:

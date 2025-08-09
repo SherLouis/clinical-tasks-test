@@ -4,6 +4,26 @@ import 'package:task_test_app/services/session_manager.dart';
 
 import 'package:task_test_app/utils/app_sizes.dart';
 
+class _MenuButton {
+  final IconData icon;
+  final String label;
+  final Color color;
+  final Color iconColor;
+  final Color textColor;
+  final FontWeight? fontWeight;
+  final VoidCallback onPressed;
+
+  _MenuButton({
+    required this.icon,
+    required this.label,
+    required this.color,
+    required this.iconColor,
+    required this.textColor,
+    this.fontWeight,
+    required this.onPressed,
+  });
+}
+
 class ImageTestView extends StatefulWidget {
   final List<String> images;
   final String groupName;
@@ -52,6 +72,15 @@ class _ImageTestViewState extends State<ImageTestView>
     });
   }
 
+  void closeMenuIfOpen() {
+    if (showMenu) {
+      setState(() {
+        showMenu = false;
+        _menuController.forward();
+      });
+    }
+  }
+
   void skipImage() {
     final imagePath = filteredImages[index];
     SessionManager().skipImage(widget.groupName, widget.testName, imagePath);
@@ -66,7 +95,7 @@ class _ImageTestViewState extends State<ImageTestView>
         index = 0;
       }
     });
-    toggleMenu();
+    closeMenuIfOpen();
   }
 
   void quitTest() {
@@ -155,6 +184,22 @@ class _ImageTestViewState extends State<ImageTestView>
                 ),
                 onPressed: () => Navigator.pop(context),
               ),
+              ElevatedButton.icon(
+                icon: const Icon(Icons.restore),
+                label: Text(
+                  AppLocalizations.of(context)!.restore,
+                  style: TextStyle(fontSize: AppSizes.fontSize(context)),
+                ),
+                onPressed: () {
+                  SessionManager().restoreSkippedImages(
+                    widget.groupName,
+                    widget.testName,
+                  );
+                  setState(() {
+                    filteredImages = List.from(widget.images);
+                  });
+                },
+              ),
             ],
           ),
         ),
@@ -195,6 +240,29 @@ class _ImageTestViewState extends State<ImageTestView>
               child: Image.asset(image, fit: BoxFit.contain),
             ),
           ),
+
+          if (widget.isPreTest)
+            Positioned(
+              bottom: 20,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: ElevatedButton.icon(
+                  icon: Icon(Icons.skip_next, color: Colors.orange),
+                  label: Text(
+                    AppLocalizations.of(context)!.skipImage,
+                    style: TextStyle(
+                      color: Colors.orange,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueGrey,
+                  ),
+                  onPressed: skipImage,
+                ),
+              ),
+            ),
 
           if (showMenu)
             FadeTransition(
@@ -269,14 +337,7 @@ class _ImageTestViewState extends State<ImageTestView>
             "⟵ ${AppLocalizations.of(context)!.previous}",
             context,
           ),
-          _zoneOverlay(
-            thirdWidth,
-            0,
-            thirdWidth,
-            size.height,
-            "☰ ${AppLocalizations.of(context)!.showMenu}",
-            context,
-          ),
+          _zoneOverlay(thirdWidth, 0, thirdWidth, size.height, "", context),
         ],
       ),
     );
@@ -314,82 +375,89 @@ class _ImageTestViewState extends State<ImageTestView>
   }
 
   Widget _buildMenuButtons(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
-    final horizontalMargin = size.width * 0.4;
-
     final buttonPadding = AppSizes.isSmall(context) ? 28.0 : 40.0;
+    final buttonWidth =
+        MediaQuery.of(context).size.width * 0.2; // largeur fixe proportionnelle
 
-    return Stack(
-      children: [
-        // Bouton Terminer
-        Positioned(
-          top: size.height * 0.10,
-          left: horizontalMargin,
-          right: horizontalMargin,
-          height: size.height * 0.20,
-          child: ElevatedButton.icon(
-            icon: Icon(Icons.stop_circle, size: AppSizes.iconSize(context)),
-            label: Text(
-              AppLocalizations.of(context)!.endTest,
-              style: TextStyle(fontSize: AppSizes.fontSize(context)),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.redAccent,
-              padding: EdgeInsets.symmetric(vertical: buttonPadding),
-            ),
-            onPressed: quitTest,
-          ),
+    final List<_MenuButton> buttons = [
+      _MenuButton(
+        icon: Icons.stop_circle,
+        label: AppLocalizations.of(context)!.endTest,
+        color: Colors.redAccent,
+        iconColor: Colors.white,
+        textColor: Colors.white,
+        onPressed: quitTest,
+      ),
+      _MenuButton(
+        icon: Icons.close,
+        label: AppLocalizations.of(context)!.closeMenu,
+        color: Colors.blueGrey,
+        iconColor: Colors.white,
+        textColor: Colors.white,
+        onPressed: toggleMenu,
+      ),
+      if (SessionManager().hasActiveSession)
+        _MenuButton(
+          icon: Icons.skip_next,
+          label: AppLocalizations.of(context)!.skipImage,
+          color: Colors.blueGrey,
+          iconColor: Colors.orange,
+          textColor: Colors.orange,
+          fontWeight: FontWeight.bold,
+          onPressed: skipImage,
         ),
-        // Bouton Fermer menu
-        Positioned(
-          top: size.height * 0.40,
-          left: horizontalMargin,
-          right: horizontalMargin,
-          height: size.height * 0.20,
-          child: ElevatedButton.icon(
-            icon: Icon(Icons.close, size: AppSizes.iconSize(context)),
-            label: Text(
-              AppLocalizations.of(context)!.closeMenu,
-              style: TextStyle(fontSize: AppSizes.fontSize(context)),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blueGrey,
-              padding: EdgeInsets.symmetric(vertical: buttonPadding),
-            ),
-            onPressed: toggleMenu,
-          ),
+      if (SessionManager().hasActiveSession)
+        _MenuButton(
+          icon: Icons.restore,
+          label: AppLocalizations.of(context)!.restore,
+          color: Colors.green,
+          iconColor: Colors.white,
+          textColor: Colors.white,
+          onPressed: () {
+            SessionManager().restoreSkippedImages(
+              widget.groupName,
+              widget.testName,
+            );
+            setState(() {
+              filteredImages = List.from(widget.images);
+            });
+            toggleMenu();
+          },
         ),
-        // Bouton skip image
-        if (SessionManager().hasActiveSession) ...[
-          Positioned(
-            top: size.height * 0.70,
-            left: horizontalMargin,
-            right: horizontalMargin,
-            height: size.height * 0.20,
-            child: ElevatedButton.icon(
-              icon: Icon(
-                Icons.skip_next,
-                size: AppSizes.iconSize(context),
-                color: Colors.orange,
-              ),
-              label: Text(
-                AppLocalizations.of(context)!.skipImage,
-                style: TextStyle(
-                  fontSize: AppSizes.fontSize(context),
-                  color: Colors.orange,
-                  fontWeight: FontWeight.bold,
+    ];
+
+    return Center(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: buttons.map((btn) {
+            return Container(
+              width: buttonWidth,
+              margin: const EdgeInsets.symmetric(vertical: 12),
+              child: ElevatedButton.icon(
+                icon: Icon(
+                  btn.icon,
+                  size: AppSizes.iconSize(context),
+                  color: btn.iconColor,
                 ),
+                label: Text(
+                  btn.label,
+                  style: TextStyle(
+                    fontSize: AppSizes.fontSize(context),
+                    color: btn.textColor,
+                    fontWeight: btn.fontWeight,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: btn.color,
+                  padding: EdgeInsets.symmetric(vertical: buttonPadding),
+                ),
+                onPressed: btn.onPressed,
               ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blueGrey,
-                padding: EdgeInsets.symmetric(vertical: buttonPadding),
-              ),
-              onPressed: skipImage,
-            ),
-          ),
-        ],
-      ],
+            );
+          }).toList(),
+        ),
+      ),
     );
   }
 }
