@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_test_app/l10n/app_localizations.dart';
 import 'package:task_test_app/services/session_manager.dart';
-import 'package:task_test_app/services/web_test_storage_service.dart'; // Implement factory instead for multi-platform support
+
 import 'package:task_test_app/utils/app_sizes.dart';
 
 class ImageTestView extends StatefulWidget {
@@ -138,8 +138,6 @@ class _ImageTestViewState extends State<ImageTestView>
 
   @override
   Widget build(BuildContext context) {
-    final testStorageService = WebTestStorageService();
-
     final size = MediaQuery.of(context).size;
 
     if (filteredImages.isEmpty) {
@@ -206,20 +204,7 @@ class _ImageTestViewState extends State<ImageTestView>
           Center(
             child: SizedBox.expand(
               key: ValueKey<String>(image),
-              child: FutureBuilder<ImageProvider>(
-                future: testStorageService.loadImageAsync(image),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState != ConnectionState.done) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                  if (!snapshot.hasData) {
-                    return const Center(
-                      child: Icon(Icons.broken_image, size: 64),
-                    );
-                  }
-                  return Image(image: snapshot.data!, fit: BoxFit.contain);
-                },
-              ),
+              child: Image.asset(image, fit: BoxFit.contain),
             ),
           ),
           Positioned(
