@@ -55,11 +55,7 @@ class SessionManager {
         .add(imagePath);
   }
 
-  bool isImageSkipped(
-    String group,
-    String test,
-    String imagePath,
-  ) {
+  bool isImageSkipped(String group, String test, String imagePath) {
     if (_currentSession == null) return false;
     final key = _getTestKey(group, test);
     return _currentSession!.skippedImagesByTest[key]?.contains(imagePath) ??
@@ -68,15 +64,27 @@ class SessionManager {
 
   void addCompletedTest(String group, String test) {
     if (_currentSession == null) return;
-    _currentSession!.completedTests.add(
-      CompletedTest(
+
+    final index = _currentSession!.completedTests.indexWhere(
+      (t) => t.groupName == group && t.testName == test,
+    );
+
+    if (index != -1) {
+      _currentSession!.completedTests[index] = CompletedTest(
         groupName: group,
         testName: test,
         completedAt: DateTime.now(),
-      ),
-    );
+      );
+    } else {
+      _currentSession!.completedTests.add(
+        CompletedTest(
+          groupName: group,
+          testName: test,
+          completedAt: DateTime.now(),
+        ),
+      );
+    }
   }
 
-  String _getTestKey(String group, String test) =>
-      '$group|$test';
+  String _getTestKey(String group, String test) => '$group|$test';
 }

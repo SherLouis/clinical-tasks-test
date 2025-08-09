@@ -62,7 +62,6 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                 ),
               ),
             ),
-          // TODO: when test already completed, only change the completed date
           // TOdO: when selecting from history list, start the test
           if (widget.isSession && _showHistory)
             Container(
@@ -99,6 +98,14 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                                     color: Colors.grey,
                                   ),
                                 ),
+                                onTap: () async {
+                                  await _startTestByName(
+                                    test.groupName,
+                                    test.testName,
+                                    false,
+                                  );
+                                  setState(() {});
+                                },
                               );
                             },
                           ),
@@ -109,6 +116,35 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _startTest(
+    TestItem test,
+    String testGroup,
+    bool isPreTest,
+  ) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => TestExecutionScreen(
+          test: test,
+          groupName: testGroup,
+          isPreTest: isPreTest,
+        ),
+      ),
+    );
+  }
+
+  Future<void> _startTestByName(
+    String groupName,
+    String testName,
+    bool isPreTest,
+  ) async {
+    TestItem testItem = groups
+        .firstWhere((g) => g.name == groupName)
+        .testItems
+        .firstWhere((t) => t.name == testName);
+    await _startTest(testItem, groupName, isPreTest);
   }
 
   List<Widget> _buildTestTree(BuildContext context) {
@@ -142,15 +178,10 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                         style: TextStyle(fontSize: AppSizes.fontSize(context)),
                       ),
                       onTap: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => TestExecutionScreen(
-                              test: t,
-                              groupName: selectedGroup!.name,
-                              isPreTest: widget.isPreTest,
-                            ),
-                          ),
+                        await _startTest(
+                          t,
+                          selectedGroup!.name,
+                          widget.isPreTest,
                         );
                         setState(() {});
                       },
