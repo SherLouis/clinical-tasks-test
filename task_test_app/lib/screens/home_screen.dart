@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_test_app/l10n/app_localizations.dart';
 import 'package:task_test_app/screens/session_select_screen.dart';
+import 'package:task_test_app/services/session_manager.dart';
 import 'package:task_test_app/utils/app_sizes.dart';
 import 'test_selection_screen.dart';
 
@@ -21,10 +22,15 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const TestSelectionScreen()),
-              ),
+              onPressed: () => {
+                SessionManager().endSession(),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const TestSelectionScreen(),
+                  ),
+                ),
+              },
               child: Text(
                 AppLocalizations.of(context)!.startNewTest,
                 style: TextStyle(fontSize: AppSizes.fontSize(context)),
@@ -35,7 +41,9 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const SessionSelectScreen()),
+                  MaterialPageRoute(
+                    builder: (_) => const SessionSelectScreen(),
+                  ),
                 );
               },
               child: Text(
