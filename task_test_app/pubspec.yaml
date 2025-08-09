@@ -62,6 +62,7 @@ flutter:
 
   generate: true
 
+  # TODO: add all paths to test images, complementary material and instructions
   assets:
     - assets/data/tests.json
     - assets/data/tests/boston_naming_test/test/

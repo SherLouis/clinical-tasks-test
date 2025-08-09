@@ -54,11 +54,7 @@ class _ImageTestViewState extends State<ImageTestView>
 
   void skipImage() {
     final imagePath = filteredImages[index];
-    SessionManager().skipImage(
-      widget.groupName,
-      widget.testName,
-      imagePath,
-    );
+    SessionManager().skipImage(widget.groupName, widget.testName, imagePath);
 
     setState(() {
       filteredImages.removeAt(index);
@@ -75,10 +71,7 @@ class _ImageTestViewState extends State<ImageTestView>
 
   void quitTest() {
     if (SessionManager().hasActiveSession && !widget.isPreTest) {
-      SessionManager().addCompletedTest(
-        widget.groupName,
-        widget.testName,
-      );
+      SessionManager().addCompletedTest(widget.groupName, widget.testName);
     }
     Navigator.pop(context);
   }
@@ -202,17 +195,6 @@ class _ImageTestViewState extends State<ImageTestView>
               child: Image.asset(image, fit: BoxFit.contain),
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: LinearProgressIndicator(
-              value: (index + 1) / filteredImages.length,
-              backgroundColor: Colors.black26,
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.lightBlueAccent),
-              minHeight: 4,
-            ),
-          ),
 
           if (showMenu)
             FadeTransition(
@@ -220,6 +202,7 @@ class _ImageTestViewState extends State<ImageTestView>
               child: Stack(
                 children: [
                   _buildOverlayZones(context),
+                  _buildProgressBar(context),
                   SlideTransition(
                     position: _slideAnimation,
                     child: _buildMenuButtons(context),
@@ -228,6 +211,20 @@ class _ImageTestViewState extends State<ImageTestView>
               ),
             ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildProgressBar(BuildContext context) {
+    return Positioned(
+      bottom: 0,
+      left: 0,
+      right: 0,
+      child: LinearProgressIndicator(
+        value: (index + 1) / filteredImages.length,
+        backgroundColor: Colors.black26,
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.lightBlueAccent),
+        minHeight: 4,
       ),
     );
   }
