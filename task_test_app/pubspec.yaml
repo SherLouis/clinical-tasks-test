@@ -64,8 +64,8 @@ flutter:
 
   assets:
     - assets/data/tests.json
-    - assets/images/Fruits/
-    - assets/images/Personnalites/
+    - assets/data/tests/boston_naming_test/test/
+    - assets/data/tests/boston_naming_test/complementary/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

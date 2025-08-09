@@ -23,7 +23,6 @@ class TestSelectionScreen extends StatefulWidget {
 class _TestSelectionScreenState extends State<TestSelectionScreen> {
   List<TestGroup> groups = [];
   TestGroup? selectedGroup;
-  TestSubGroup? selectedSubGroup;
   bool _showHistory = true;
 
   @override
@@ -43,27 +42,29 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
       body: Row(
         children: [
           Expanded(flex: 2, child: Row(children: _buildTestTree(context))),
-          Container(
-            width: 10,
-            child: GestureDetector(
-              onTap: () => setState(() => _showHistory = !_showHistory),
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: Center(
-                  child: Icon(
-                    _showHistory
-                        ? Icons.arrow_forward_ios
-                        : Icons.arrow_back_ios,
-                    size: 16,
-                    color: Colors.grey,
+          // Panneau historique
+          if (widget.isSession)
+            Container(
+              width: 10,
+              child: GestureDetector(
+                onTap: () => setState(() => _showHistory = !_showHistory),
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Center(
+                    child: Icon(
+                      _showHistory
+                          ? Icons.arrow_forward_ios
+                          : Icons.arrow_back_ios,
+                      size: 16,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-
-          // Panneau historique
-          if (_showHistory)
+          // TODO: when test already completed, only change the completed date
+          // TOdO: when selecting from history list, start the test
+          if (widget.isSession && _showHistory)
             Container(
               width: 300,
               child: Column(
@@ -91,9 +92,6 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                               return ListTile(
                                 dense: true,
                                 title: Text(test.testName),
-                                subtitle: Text(
-                                  '${test.groupName} / ${test.subGroupName}',
-                                ),
                                 trailing: Text(
                                   _formatDateTime(test.completedAt),
                                   style: const TextStyle(
@@ -127,7 +125,6 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                   selected: g == selectedGroup,
                   onTap: () => setState(() {
                     selectedGroup = g;
-                    selectedSubGroup = null;
                   }),
                 ),
               )
@@ -137,25 +134,7 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
       Expanded(
         child: ListView(
           children:
-              selectedGroup?.subGroups
-                  .map(
-                    (sg) => ListTile(
-                      title: Text(
-                        sg.name,
-                        style: TextStyle(fontSize: AppSizes.fontSize(context)),
-                      ),
-                      selected: sg == selectedSubGroup,
-                      onTap: () => setState(() => selectedSubGroup = sg),
-                    ),
-                  )
-                  .toList() ??
-              [],
-        ),
-      ),
-      Expanded(
-        child: ListView(
-          children:
-              selectedSubGroup?.tests
+              selectedGroup?.testItems
                   .map(
                     (t) => ListTile(
                       title: Text(
@@ -169,7 +148,6 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                             builder: (_) => TestExecutionScreen(
                               test: t,
                               groupName: selectedGroup!.name,
-                              subGroupName: selectedSubGroup!.name,
                               isPreTest: widget.isPreTest,
                             ),
                           ),

@@ -7,7 +7,6 @@ import 'package:task_test_app/utils/app_sizes.dart';
 class ImageTestView extends StatefulWidget {
   final List<String> images;
   final String groupName;
-  final String subGroupName;
   final String testName;
   final bool isPreTest;
 
@@ -15,7 +14,6 @@ class ImageTestView extends StatefulWidget {
     super.key,
     required this.images,
     required this.groupName,
-    required this.subGroupName,
     required this.testName,
     required this.isPreTest,
   });
@@ -58,7 +56,6 @@ class _ImageTestViewState extends State<ImageTestView>
     final imagePath = filteredImages[index];
     SessionManager().skipImage(
       widget.groupName,
-      widget.subGroupName,
       widget.testName,
       imagePath,
     );
@@ -80,7 +77,6 @@ class _ImageTestViewState extends State<ImageTestView>
     if (SessionManager().hasActiveSession && !widget.isPreTest) {
       SessionManager().addCompletedTest(
         widget.groupName,
-        widget.subGroupName,
         widget.testName,
       );
     }
@@ -111,7 +107,6 @@ class _ImageTestViewState extends State<ImageTestView>
           .where(
             (image) => !SessionManager().isImageSkipped(
               widget.groupName,
-              widget.subGroupName,
               widget.testName,
               image,
             ),

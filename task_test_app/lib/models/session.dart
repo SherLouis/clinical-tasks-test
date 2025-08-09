@@ -18,13 +18,11 @@ class SessionData {
 
 class CompletedTest {
   final String groupName;
-  final String subGroupName;
   final String testName;
   final DateTime completedAt;
 
   CompletedTest({
     required this.groupName,
-    required this.subGroupName,
     required this.testName,
     required this.completedAt,
   });
