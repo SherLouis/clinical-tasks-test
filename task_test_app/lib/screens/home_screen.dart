@@ -18,37 +18,63 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Column(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () => {
-                SessionManager().endSession(),
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const TestSelectionScreen(),
+            SizedBox.square(
+              dimension: 200,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(20),
+                  ),
+                  textStyle: TextStyle(
+                    fontSize: AppSizes.fontSize(context) + 4,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              },
-              child: Text(
-                AppLocalizations.of(context)!.startNewTest,
-                style: TextStyle(fontSize: AppSizes.fontSize(context)),
+                onPressed: () => {
+                  SessionManager().endSession(),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const TestSelectionScreen(),
+                    ),
+                  ),
+                },
+                child: Text(
+                  AppLocalizations.of(context)!.startNewTest,
+                  style: TextStyle(fontSize: AppSizes.fontSize(context)),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const SessionSelectScreen(),
+            const SizedBox(width: 20),
+            SizedBox.square(
+              dimension: 200,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadiusGeometry.circular(20),
                   ),
-                );
-              },
-              child: Text(
-                AppLocalizations.of(context)!.startNewSession,
-                style: TextStyle(fontSize: AppSizes.fontSize(context)),
+                  textStyle: TextStyle(
+                    fontSize: AppSizes.fontSize(context) + 4,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const SessionSelectScreen(),
+                    ),
+                  );
+                },
+                child: Text(
+                  AppLocalizations.of(context)!.startNewSession,
+                  style: TextStyle(fontSize: AppSizes.fontSize(context)),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
           ],
