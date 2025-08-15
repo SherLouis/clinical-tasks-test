@@ -1,39 +1,109 @@
 [
-  {
-    "name": "Fruits",
-    "subGroups": [
-      {
-        "name": "Fruits - Ensemble 1",
+    {
+        "category_name": "Denomination",
         "tests": [
-          {
-            "name": "Fruits Test 1",
-            "images": [
-              "assets/images/Fruits/pommes.jpg",
-              "assets/images/Fruits/bananes.jpg",
-              "assets/images/Fruits/fraises.jpg",
-              "assets/images/Fruits/oranges.jpg"
-            ]
-          }
+            {
+                "name": "Boston Naming Test",
+                "test_images": [
+                    "assets/data/tests/boston_naming_test/test/1.png",
+                    "assets/data/tests/boston_naming_test/test/2.png",
+                    "assets/data/tests/boston_naming_test/test/3.png"
+                ],
+                "complementary_material_images": [
+                    "assets/data/tests/boston_naming_test/complementary/1.png",
+                    "assets/data/tests/boston_naming_test/complementary/2.png",
+                    "assets/data/tests/boston_naming_test/complementary/3.png",
+                    "assets/data/tests/boston_naming_test/complementary/4.png"
+                ],
+                "instructions": null
+            },
+            {
+                "name": "DO-80 simple",
+                "test_images": [
+                    "assets/data/tests/do80/test/1.jpg",
+                    "assets/data/tests/do80/test/2.jpg",
+                    "assets/data/tests/do80/test/3.jpg"
+                ],
+                "complementary_material_images": [
+                    "assets/data/tests/do80/complementary/1.jpg",
+                    "assets/data/tests/do80/complementary/2.jpg",
+                    "assets/data/tests/do80/complementary/3.jpg"
+                ],
+                "instructions": null
+            },
+            {
+                "name": "TDQ 30",
+                "test_images": [
+                    "assets/data/tests/tdq30/test/1.jpg",
+                    "assets/data/tests/tdq30/test/2.jpg",
+                    "assets/data/tests/tdq30/test/3.jpg"
+                ],
+                "complementary_material_images": null,
+                "instructions": null
+            },
+            {
+                "name": "TDQ 60",
+                "test_images": [
+                    "assets/data/tests/tdq60/test/1.jpg",
+                    "assets/data/tests/tdq60/test/2.jpg",
+                    "assets/data/tests/tdq60/test/3.jpg"
+                ],
+                "complementary_material_images": null,
+                "instructions": null
+            },
+            {
+                "name": "Logos",
+                "test_images": [
+                    "assets/data/tests/logos/test/1.jpg",
+                    "assets/data/tests/logos/test/2.jpg",
+                    "assets/data/tests/logos/test/3.jpg"
+                ],
+                "complementary_material_images": null,
+                "instructions": null
+            }
         ]
-      }
-    ]
-  },
-  {
-    "name": "Personnalites",
-    "subGroups": [
-      {
-        "name": "Personnalites - Ensemble 1",
+    },
+    {
+        "category_name": "Lecture",
         "tests": [
-          {
-            "name": "Personnalites Test 1",
-            "images": [
-              "assets/images/Personnalites/einstein.jpg",
-              "assets/images/Personnalites/obama.jpg",
-              "assets/images/Personnalites/elon.jpg"
-            ]
-          }
+            {
+                "name": "Mots irréguliers",
+                "test_images": [
+                    "assets/data/tests/irregular_words/test/1.jpg",
+                    "assets/data/tests/irregular_words/test/2.jpg",
+                    "assets/data/tests/irregular_words/test/3.jpg"
+                ],
+                "complementary_material_images": null,
+                "instructions": null
+            },
+            {
+                "name": "Pseudo mots",
+                "test_images": [
+                    "assets/data/tests/pseudo_words/test/1.jpg",
+                    "assets/data/tests/pseudo_words/test/2.jpg",
+                    "assets/data/tests/pseudo_words/test/3.jpg"
+                ],
+                "complementary_material_images": null,
+                "instructions": null
+            },
+            {
+                "name": "Phrases",
+                "test_images": [
+                    "assets/data/tests/sentences/test/1.jpg",
+                    "assets/data/tests/sentences/test/2.jpg",
+                    "assets/data/tests/sentences/test/3.jpg"
+                ],
+                "complementary_material_images": [
+                    "assets/data/tests/sentences/complementary/1.jpg",
+                    "assets/data/tests/sentences/complementary/2.jpg",
+                    "assets/data/tests/sentences/complementary/3.jpg"
+                ],
+                "instructions": [
+                    "assets/data/tests/sentences/instructions/1.jpg",
+                    "assets/data/tests/sentences/instructions/2.jpg",
+                    "assets/data/tests/sentences/instructions/3.jpg"
+                ]
+            }
         ]
-      }
-    ]
-  }
+    }
 ]
