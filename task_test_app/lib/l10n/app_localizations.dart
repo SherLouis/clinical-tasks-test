@@ -304,6 +304,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No completed tests for this session'**
   String get noCompletedTest;
+
+  /// No description provided for @startTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Start test'**
+  String get startTest;
+
+  /// No description provided for @startPreTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Start pre-test'**
+  String get startPreTest;
+
+  /// No description provided for @showInstructions.
+  ///
+  /// In en, this message translates to:
+  /// **'Show instructions'**
+  String get showInstructions;
+
+  /// No description provided for @showComplementary.
+  ///
+  /// In en, this message translates to:
+  /// **'Show complementary material'**
+  String get showComplementary;
+
+  /// No description provided for @testOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Test options'**
+  String get testOptions;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

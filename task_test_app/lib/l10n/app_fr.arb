@@ -34,5 +34,10 @@
   "restore" : "Restaurer",
   "cancel" : "Annuler",
   "testHistory": "Historique des tests",
-  "noCompletedTest": "Aucun test complété pour cette session"
+  "noCompletedTest": "Aucun test complété pour cette session",
+  "startTest": "Démarrer le test",
+  "startPreTest": "Démarrer le pré-test",
+  "showInstructions": "Afficher les instructions",
+  "showComplementary": "Afficher le matériel complémentaire",
+  "testOptions": "Options du test"
 }

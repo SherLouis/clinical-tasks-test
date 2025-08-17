@@ -116,4 +116,19 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get noCompletedTest => 'Aucun test complété pour cette session';
+
+  @override
+  String get startTest => 'Démarrer le test';
+
+  @override
+  String get startPreTest => 'Démarrer le pré-test';
+
+  @override
+  String get showInstructions => 'Afficher les instructions';
+
+  @override
+  String get showComplementary => 'Afficher le matériel complémentaire';
+
+  @override
+  String get testOptions => 'Options du test';
 }
