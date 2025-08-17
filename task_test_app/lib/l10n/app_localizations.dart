@@ -203,12 +203,6 @@ abstract class AppLocalizations {
   /// **'Enter a session identifier : '**
   String get session_enterIdLabel;
 
-  /// No description provided for @session_selectTestMode.
-  ///
-  /// In en, this message translates to:
-  /// **'Select test mode'**
-  String get session_selectTestMode;
-
   /// No description provided for @sessionInProgress.
   ///
   /// In en, this message translates to:

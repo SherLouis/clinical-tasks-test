@@ -18,7 +18,6 @@
   "session_idRequired": "Please enter a session identifier.",
   "session_idAlreadyExists" : "This session ID already exists.",
   "session_enterIdLabel": "Enter a session identifier : ",
-  "session_selectTestMode": "Select test mode",
   "sessionInProgress": "Session \"{id}\" in progress",
   "session_startPreTest" : "Start pre-test",
   "session_startTest" : "Start test",

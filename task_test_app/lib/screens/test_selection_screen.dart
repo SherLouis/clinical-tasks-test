@@ -9,12 +9,10 @@ import 'test_execution_screen.dart';
 
 class TestSelectionScreen extends StatefulWidget {
   final bool isSession;
-  final bool isPreTest;
 
   const TestSelectionScreen({
     super.key,
     this.isSession = false,
-    this.isPreTest = false,
   });
 
   @override
@@ -327,7 +325,7 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                       if (selectedTest != null && selectedGroup != null) {
                         final test = selectedTest!;
                         final groupName = selectedGroup!.name;
-                        final isPreTest = widget.isPreTest;
+                        final isPreTest = false; // Default to regular test, pre-test is selected in drawer
                         _closeOptionsDrawerOnly();
                         await _startTest(
                           test,

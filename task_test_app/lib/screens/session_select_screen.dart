@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_test_app/l10n/app_localizations.dart';
 import 'package:task_test_app/models/session.dart';
-import 'package:task_test_app/screens/session_mode_screen.dart';
+import 'package:task_test_app/screens/test_selection_screen.dart';
 import 'package:task_test_app/services/session_manager.dart';
 
 class SessionSelectScreen extends StatefulWidget {
@@ -70,10 +70,12 @@ class _SessionSelectScreenState extends State<SessionSelectScreen> {
 
     if (created == true) {
       _reloadSessions();
-      // Navigue directement au choix de mode
+      // Navigate directly to test selection
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (_) => const SessionModeScreen()),
+        MaterialPageRoute(
+          builder: (_) => const TestSelectionScreen(isSession: true),
+        ),
       );
     }
   }
@@ -107,7 +109,9 @@ class _SessionSelectScreenState extends State<SessionSelectScreen> {
     SessionManager().resumeSession(session.sessionId);
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => const SessionModeScreen()),
+      MaterialPageRoute(
+        builder: (_) => const TestSelectionScreen(isSession: true),
+      ),
     ).then((_) => _reloadSessions());
   }
 

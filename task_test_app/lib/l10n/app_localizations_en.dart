@@ -63,9 +63,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get session_enterIdLabel => 'Enter a session identifier : ';
 
   @override
-  String get session_selectTestMode => 'Select test mode';
-
-  @override
   String sessionInProgress(Object id) {
     return 'Session \"$id\" in progress';
   }
