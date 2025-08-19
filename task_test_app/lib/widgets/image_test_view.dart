@@ -3,7 +3,9 @@ import 'package:task_test_app/l10n/app_localizations.dart';
 import 'package:task_test_app/services/session_manager.dart';
 
 import 'package:task_test_app/utils/app_sizes.dart';
+import 'package:task_test_app/widgets/cached_image_widget.dart';
 
+// TODO: is this needed?
 class _MenuButton {
   final IconData icon;
   final String label;
@@ -237,7 +239,7 @@ class _ImageTestViewState extends State<ImageTestView>
           Center(
             child: SizedBox.expand(
               key: ValueKey<String>(image),
-              child: Image.asset(image, fit: BoxFit.contain),
+              child: CachedImageWidget(imageUrl: image, fit: BoxFit.contain)
             ),
           ),
 

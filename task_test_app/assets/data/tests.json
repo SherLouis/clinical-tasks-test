@@ -1,7 +1,10 @@
-[
-    {
-        "category_name": "Denomination",
-        "tests": [
+{
+    "version": "1.0.0",
+    "last_updated": "2024-01-15T00:00:00Z",
+    "tests": [
+        {
+            "category_name": "Denomination",
+            "tests": [
             {
                 "name": "Boston Naming Test",
                 "test_images": [
@@ -106,4 +109,5 @@
             }
         ]
     }
-]
+    ]
+}
