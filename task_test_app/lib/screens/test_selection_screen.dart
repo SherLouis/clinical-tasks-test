@@ -29,6 +29,7 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
   @override
   void initState() {
     super.initState();
+    // TODO: add overlay loader while loading data
     loadTestData().then((data) => setState(() => groups = data));
   }
 

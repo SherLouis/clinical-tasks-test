@@ -7,8 +7,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:crypto/crypto.dart';
 
-// TODO: refresh cache only when needed (new version of data)
-
 class ImageCacheService {
   static ImageCacheService? _instance;
   static ImageCacheService get instance => _instance ??= ImageCacheService._();
