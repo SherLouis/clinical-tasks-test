@@ -1,113 +1,247 @@
 {
-    "version": "1.0.0",
-    "last_updated": "2025-08-27T00:00:00Z",
+    "version": "0.0.1",
+    "last_updated": "2025-08-28T01:00:00Z",
     "tests": [
         {
             "category_name": "Denomination",
             "tests": [
-            {
-                "name": "Boston Naming Test",
-                "test_images": [
-                    "assets/data/tests/boston_naming_test/test/1.png",
-                    "assets/data/tests/boston_naming_test/test/2.png",
-                    "assets/data/tests/boston_naming_test/test/3.png"
-                ],
-                "complementary_material_images": [
-                    "assets/data/tests/boston_naming_test/complementary/1.png",
-                    "assets/data/tests/boston_naming_test/complementary/2.png",
-                    "assets/data/tests/boston_naming_test/complementary/3.png",
-                    "assets/data/tests/boston_naming_test/complementary/4.png"
-                ],
-                "instructions": null
-            },
-            {
-                "name": "DO-80 simple",
-                "test_images": [
-                    "assets/data/tests/do80/test/1.jpg",
-                    "assets/data/tests/do80/test/2.jpg",
-                    "assets/data/tests/do80/test/3.jpg"
-                ],
-                "complementary_material_images": [
-                    "assets/data/tests/do80/complementary/1.jpg",
-                    "assets/data/tests/do80/complementary/2.jpg",
-                    "assets/data/tests/do80/complementary/3.jpg"
-                ],
-                "instructions": null
-            },
-            {
-                "name": "TDQ 30",
-                "test_images": [
-                    "assets/data/tests/tdq30/test/1.jpg",
-                    "assets/data/tests/tdq30/test/2.jpg",
-                    "assets/data/tests/tdq30/test/3.jpg"
-                ],
-                "complementary_material_images": null,
-                "instructions": null
-            },
-            {
-                "name": "TDQ 60",
-                "test_images": [
-                    "assets/data/tests/tdq60/test/1.jpg",
-                    "assets/data/tests/tdq60/test/2.jpg",
-                    "assets/data/tests/tdq60/test/3.jpg"
-                ],
-                "complementary_material_images": null,
-                "instructions": null
-            },
-            {
-                "name": "Logos",
-                "test_images": [
-                    "assets/data/tests/logos/test/1.jpg",
-                    "assets/data/tests/logos/test/2.jpg",
-                    "assets/data/tests/logos/test/3.jpg"
-                ],
-                "complementary_material_images": null,
-                "instructions": null
-            }
-        ]
-    },
-    {
-        "category_name": "Lecture",
-        "tests": [
-            {
-                "name": "Mots irréguliers",
-                "test_images": [
-                    "assets/data/tests/irregular_words/test/1.jpg",
-                    "assets/data/tests/irregular_words/test/2.jpg",
-                    "assets/data/tests/irregular_words/test/3.jpg"
-                ],
-                "complementary_material_images": null,
-                "instructions": null
-            },
-            {
-                "name": "Pseudo mots",
-                "test_images": [
-                    "assets/data/tests/pseudo_words/test/1.jpg",
-                    "assets/data/tests/pseudo_words/test/2.jpg",
-                    "assets/data/tests/pseudo_words/test/3.jpg"
-                ],
-                "complementary_material_images": null,
-                "instructions": null
-            },
-            {
-                "name": "Phrases",
-                "test_images": [
-                    "assets/data/tests/sentences/test/1.jpg",
-                    "assets/data/tests/sentences/test/2.jpg",
-                    "assets/data/tests/sentences/test/3.jpg"
-                ],
-                "complementary_material_images": [
-                    "assets/data/tests/sentences/complementary/1.jpg",
-                    "assets/data/tests/sentences/complementary/2.jpg",
-                    "assets/data/tests/sentences/complementary/3.jpg"
-                ],
-                "instructions": [
-                    "assets/data/tests/sentences/instructions/1.jpg",
-                    "assets/data/tests/sentences/instructions/2.jpg",
-                    "assets/data/tests/sentences/instructions/3.jpg"
-                ]
-            }
-        ]
-    }
+                {
+                    "name": "Boston Naming Test",
+                    "test_images": [
+                        "assets/data/tests/boston_naming_test/test/1.png",
+                        "assets/data/tests/boston_naming_test/test/2.png",
+                        "assets/data/tests/boston_naming_test/test/3.png",
+                        "assets/data/tests/boston_naming_test/test/4.png",
+                        "assets/data/tests/boston_naming_test/test/5.png",
+                        "assets/data/tests/boston_naming_test/test/6.png",
+                        "assets/data/tests/boston_naming_test/test/7.png",
+                        "assets/data/tests/boston_naming_test/test/8.png",
+                        "assets/data/tests/boston_naming_test/test/9.png",
+                        "assets/data/tests/boston_naming_test/test/10.png",
+                        "assets/data/tests/boston_naming_test/test/11.png",
+                        "assets/data/tests/boston_naming_test/test/12.png",
+                        "assets/data/tests/boston_naming_test/test/13.png",
+                        "assets/data/tests/boston_naming_test/test/14.png",
+                        "assets/data/tests/boston_naming_test/test/15.png",
+                        "assets/data/tests/boston_naming_test/test/16.png",
+                        "assets/data/tests/boston_naming_test/test/17.png",
+                        "assets/data/tests/boston_naming_test/test/18.png",
+                        "assets/data/tests/boston_naming_test/test/19.png",
+                        "assets/data/tests/boston_naming_test/test/20.png",
+                        "assets/data/tests/boston_naming_test/test/21.png",
+                        "assets/data/tests/boston_naming_test/test/22.png",
+                        "assets/data/tests/boston_naming_test/test/23.png",
+                        "assets/data/tests/boston_naming_test/test/24.png",
+                        "assets/data/tests/boston_naming_test/test/25.png",
+                        "assets/data/tests/boston_naming_test/test/26.png",
+                        "assets/data/tests/boston_naming_test/test/27.png",
+                        "assets/data/tests/boston_naming_test/test/28.png",
+                        "assets/data/tests/boston_naming_test/test/29.png",
+                        "assets/data/tests/boston_naming_test/test/30.png",
+                        "assets/data/tests/boston_naming_test/test/31.png",
+                        "assets/data/tests/boston_naming_test/test/32.png",
+                        "assets/data/tests/boston_naming_test/test/33.png",
+                        "assets/data/tests/boston_naming_test/test/34.png",
+                        "assets/data/tests/boston_naming_test/test/35.png",
+                        "assets/data/tests/boston_naming_test/test/36.png",
+                        "assets/data/tests/boston_naming_test/test/37.png",
+                        "assets/data/tests/boston_naming_test/test/38.png",
+                        "assets/data/tests/boston_naming_test/test/39.png",
+                        "assets/data/tests/boston_naming_test/test/40.png",
+                        "assets/data/tests/boston_naming_test/test/41.png",
+                        "assets/data/tests/boston_naming_test/test/42.png",
+                        "assets/data/tests/boston_naming_test/test/43.png",
+                        "assets/data/tests/boston_naming_test/test/44.png",
+                        "assets/data/tests/boston_naming_test/test/45.png",
+                        "assets/data/tests/boston_naming_test/test/46.png",
+                        "assets/data/tests/boston_naming_test/test/47.png",
+                        "assets/data/tests/boston_naming_test/test/48.png",
+                        "assets/data/tests/boston_naming_test/test/49.png",
+                        "assets/data/tests/boston_naming_test/test/50.png",
+                        "assets/data/tests/boston_naming_test/test/51.png",
+                        "assets/data/tests/boston_naming_test/test/52.png",
+                        "assets/data/tests/boston_naming_test/test/53.png",
+                        "assets/data/tests/boston_naming_test/test/54.png",
+                        "assets/data/tests/boston_naming_test/test/55.png",
+                        "assets/data/tests/boston_naming_test/test/56.png",
+                        "assets/data/tests/boston_naming_test/test/57.png",
+                        "assets/data/tests/boston_naming_test/test/58.png",
+                        "assets/data/tests/boston_naming_test/test/59.png",
+                        "assets/data/tests/boston_naming_test/test/60.png"
+                    ],
+                    "complementary_material_images": [
+                        "assets/data/tests/boston_naming_test/complementary/1.png",
+                        "assets/data/tests/boston_naming_test/complementary/2.png",
+                        "assets/data/tests/boston_naming_test/complementary/3.png",
+                        "assets/data/tests/boston_naming_test/complementary/4.png"
+                    ],
+                    "instructions": null
+                },
+                {
+                    "name": "DO-80 simple",
+                    "test_images": [
+                        "assets/data/tests/do80/test/2.png",
+                        "assets/data/tests/do80/test/3.png",
+                        "assets/data/tests/do80/test/4.png",
+                        "assets/data/tests/do80/test/5.png",
+                        "assets/data/tests/do80/test/6.png",
+                        "assets/data/tests/do80/test/7.png",
+                        "assets/data/tests/do80/test/8.png",
+                        "assets/data/tests/do80/test/9.png",
+                        "assets/data/tests/do80/test/10.png",
+                        "assets/data/tests/do80/test/11.png",
+                        "assets/data/tests/do80/test/12.png",
+                        "assets/data/tests/do80/test/13.png",
+                        "assets/data/tests/do80/test/14.png",
+                        "assets/data/tests/do80/test/15.png",
+                        "assets/data/tests/do80/test/16.png",
+                        "assets/data/tests/do80/test/17.png",
+                        "assets/data/tests/do80/test/18.png",
+                        "assets/data/tests/do80/test/19.png",
+                        "assets/data/tests/do80/test/20.png",
+                        "assets/data/tests/do80/test/21.png",
+                        "assets/data/tests/do80/test/22.png",
+                        "assets/data/tests/do80/test/23.png",
+                        "assets/data/tests/do80/test/24.png",
+                        "assets/data/tests/do80/test/25.png",
+                        "assets/data/tests/do80/test/26.png",
+                        "assets/data/tests/do80/test/27.png",
+                        "assets/data/tests/do80/test/28.png",
+                        "assets/data/tests/do80/test/29.png",
+                        "assets/data/tests/do80/test/30.png",
+                        "assets/data/tests/do80/test/31.png",
+                        "assets/data/tests/do80/test/32.png",
+                        "assets/data/tests/do80/test/33.png",
+                        "assets/data/tests/do80/test/34.png",
+                        "assets/data/tests/do80/test/35.png",
+                        "assets/data/tests/do80/test/36.png",
+                        "assets/data/tests/do80/test/37.png",
+                        "assets/data/tests/do80/test/38.png",
+                        "assets/data/tests/do80/test/39.png",
+                        "assets/data/tests/do80/test/40.png",
+                        "assets/data/tests/do80/test/41.png",
+                        "assets/data/tests/do80/test/42.png",
+                        "assets/data/tests/do80/test/43.png",
+                        "assets/data/tests/do80/test/44.png",
+                        "assets/data/tests/do80/test/45.png",
+                        "assets/data/tests/do80/test/46.png",
+                        "assets/data/tests/do80/test/47.png",
+                        "assets/data/tests/do80/test/48.png",
+                        "assets/data/tests/do80/test/49.png",
+                        "assets/data/tests/do80/test/50.png",
+                        "assets/data/tests/do80/test/51.png",
+                        "assets/data/tests/do80/test/52.png",
+                        "assets/data/tests/do80/test/53.png",
+                        "assets/data/tests/do80/test/54.png",
+                        "assets/data/tests/do80/test/55.png",
+                        "assets/data/tests/do80/test/56.png",
+                        "assets/data/tests/do80/test/57.png",
+                        "assets/data/tests/do80/test/58.png",
+                        "assets/data/tests/do80/test/59.png",
+                        "assets/data/tests/do80/test/60.png",
+                        "assets/data/tests/do80/test/61.png",
+                        "assets/data/tests/do80/test/62.png",
+                        "assets/data/tests/do80/test/63.png",
+                        "assets/data/tests/do80/test/64.png",
+                        "assets/data/tests/do80/test/65.png",
+                        "assets/data/tests/do80/test/66.png",
+                        "assets/data/tests/do80/test/67.png",
+                        "assets/data/tests/do80/test/68.png",
+                        "assets/data/tests/do80/test/69.png",
+                        "assets/data/tests/do80/test/70.png",
+                        "assets/data/tests/do80/test/71.png",
+                        "assets/data/tests/do80/test/72.png",
+                        "assets/data/tests/do80/test/73.png",
+                        "assets/data/tests/do80/test/74.png",
+                        "assets/data/tests/do80/test/75.png",
+                        "assets/data/tests/do80/test/76.png",
+                        "assets/data/tests/do80/test/77.png",
+                        "assets/data/tests/do80/test/78.png",
+                        "assets/data/tests/do80/test/79.png",
+                        "assets/data/tests/do80/test/80.png",
+                        "assets/data/tests/do80/test/81.png"
+                    ],
+                    "complementary_material_images": [
+                        "assets/data/tests/do80/complementary/1.jpg",
+                        "assets/data/tests/do80/complementary/2.jpg",
+                        "assets/data/tests/do80/complementary/3.jpg"
+                    ],
+                    "instructions": null
+                },
+                {
+                    "name": "TDQ 30",
+                    "test_images": [
+                        "assets/data/tests/tdq30/test/1.jpg",
+                        "assets/data/tests/tdq30/test/2.jpg",
+                        "assets/data/tests/tdq30/test/3.jpg"
+                    ],
+                    "complementary_material_images": null,
+                    "instructions": null
+                },
+                {
+                    "name": "TDQ 60",
+                    "test_images": [
+                        "assets/data/tests/tdq60/test/1.jpg",
+                        "assets/data/tests/tdq60/test/2.jpg",
+                        "assets/data/tests/tdq60/test/3.jpg"
+                    ],
+                    "complementary_material_images": null,
+                    "instructions": null
+                },
+                {
+                    "name": "Logos",
+                    "test_images": [
+                        "assets/data/tests/logos/test/1.jpg",
+                        "assets/data/tests/logos/test/2.jpg",
+                        "assets/data/tests/logos/test/3.jpg"
+                    ],
+                    "complementary_material_images": null,
+                    "instructions": null
+                }
+            ]
+        },
+        {
+            "category_name": "Lecture",
+            "tests": [
+                {
+                    "name": "Mots irréguliers",
+                    "test_images": [
+                        "assets/data/tests/irregular_words/test/1.jpg",
+                        "assets/data/tests/irregular_words/test/2.jpg",
+                        "assets/data/tests/irregular_words/test/3.jpg"
+                    ],
+                    "complementary_material_images": null,
+                    "instructions": null
+                },
+                {
+                    "name": "Pseudo mots",
+                    "test_images": [
+                        "assets/data/tests/pseudo_words/test/1.jpg",
+                        "assets/data/tests/pseudo_words/test/2.jpg",
+                        "assets/data/tests/pseudo_words/test/3.jpg"
+                    ],
+                    "complementary_material_images": null,
+                    "instructions": null
+                },
+                {
+                    "name": "Phrases",
+                    "test_images": [
+                        "assets/data/tests/sentences/test/1.jpg",
+                        "assets/data/tests/sentences/test/2.jpg",
+                        "assets/data/tests/sentences/test/3.jpg"
+                    ],
+                    "complementary_material_images": [
+                        "assets/data/tests/sentences/complementary/1.jpg",
+                        "assets/data/tests/sentences/complementary/2.jpg",
+                        "assets/data/tests/sentences/complementary/3.jpg"
+                    ],
+                    "instructions": [
+                        "assets/data/tests/sentences/instructions/1.jpg",
+                        "assets/data/tests/sentences/instructions/2.jpg",
+                        "assets/data/tests/sentences/instructions/3.jpg"
+                    ]
+                }
+            ]
+        }
     ]
 }
