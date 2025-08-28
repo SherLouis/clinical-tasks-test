@@ -62,6 +62,10 @@ Future<List<TestGroup>> loadTestData() async {
   final cachedVersion = prefs.getString('data_version');
   final cachedLastUpdated = prefs.getString('data_last_updated');
   final cachedDataJson = prefs.getString('cached_test_data');
+
+  if (AppConfig.enableCacheLogging) {
+    debugPrint('Got preferences: cachedVersion=$cachedVersion cachedLastUpdated=$cachedLastUpdated');
+  }
   
   final needsUpdate = cachedVersion != freshDataInfo.version ||
                      (cachedLastUpdated != null && 
@@ -134,57 +138,3 @@ Future<void> _preCacheAllImages(List<TestGroup> testGroups) async {
   }
 }
 
-// Function to manually refresh data (useful for testing)
-Future<void> refreshTestData() async {
-  final prefs = await SharedPreferences.getInstance();
-  final imageCacheService = ImageCacheService.instance;
-  
-  // Clear all caches
-  await prefs.clear();
-  await imageCacheService.clearAllCache();
-  
-  // Reload data
-  await loadTestData();
-}
-
-// Function to get cache information
-Future<Map<String, dynamic>> getCacheInfo() async {
-  final prefs = await SharedPreferences.getInstance();
-  final imageCacheService = ImageCacheService.instance;
-  
-  final currentVersion = prefs.getString('data_version');
-  final imageCacheStats = await imageCacheService.getCacheStats();
-  
-  return {
-    'currentVersion': currentVersion,
-    'dataCacheSize': 0, // SharedPreferences size is not easily calculable
-    'imageCacheStats': imageCacheStats,
-    'needsUpdate': currentVersion != null ? false : true,
-  };
-}
-
-// Function to pre-cache images for a specific test
-Future<void> preCacheTestImages(TestItem testItem) async {
-  final imageCacheService = ImageCacheService.instance;
-  
-  final allImageUrls = <String>[
-    ...testItem.imagePaths,
-    ...testItem.complementaryImagePaths,
-    ...testItem.instructionsImagePaths,
-  ];
-  
-  await imageCacheService.preCacheImages(allImageUrls);
-}
-
-// Function to check if images are cached for a test
-Map<String, bool> getTestImageCacheStatus(TestItem testItem) {
-  final imageCacheService = ImageCacheService.instance;
-  
-  final allImageUrls = <String>[
-    ...testItem.imagePaths,
-    ...testItem.complementaryImagePaths,
-    ...testItem.instructionsImagePaths,
-  ];
-  
-  return imageCacheService.getCacheProgress(allImageUrls);
-}

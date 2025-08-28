@@ -5,7 +5,6 @@ import 'package:task_test_app/services/session_manager.dart';
 import 'package:task_test_app/utils/app_sizes.dart';
 import 'package:task_test_app/widgets/cached_image_widget.dart';
 
-// TODO: is this needed?
 class _MenuButton {
   final IconData icon;
   final String label;
