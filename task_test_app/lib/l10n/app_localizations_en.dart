@@ -21,6 +21,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get startNewSession => 'New session';
 
   @override
+  String get loadingData => 'Loading test data...';
+
+  @override
   String get chooseTest => 'Choose a test';
 
   @override
@@ -42,9 +45,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectSession => 'Select a session';
 
   @override
-  String get existingSessions => 'Existing sessions';
-
-  @override
   String get noSessions => 'No sessions found.';
 
   @override
@@ -58,20 +58,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get session_idAlreadyExists => 'This session ID already exists.';
-
-  @override
-  String get session_enterIdLabel => 'Enter a session identifier : ';
-
-  @override
-  String sessionInProgress(Object id) {
-    return 'Session \"$id\" in progress';
-  }
-
-  @override
-  String get session_startPreTest => 'Start pre-test';
-
-  @override
-  String get session_startTest => 'Start test';
 
   @override
   String get deleteSession => 'Delete session';

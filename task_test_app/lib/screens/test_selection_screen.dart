@@ -10,10 +10,7 @@ import 'test_execution_screen.dart';
 class TestSelectionScreen extends StatefulWidget {
   final bool isSession;
 
-  const TestSelectionScreen({
-    super.key,
-    this.isSession = false,
-  });
+  const TestSelectionScreen({super.key, this.isSession = false});
 
   @override
   State<TestSelectionScreen> createState() => _TestSelectionScreenState();
@@ -23,14 +20,23 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
   List<TestGroup> groups = [];
   TestGroup? selectedGroup;
   bool _showHistory = true;
+  bool _isLoading = true;
   TestItem? selectedTest;
   bool _showOptionsDrawer = false;
 
   @override
   void initState() {
     super.initState();
-    // TODO: add overlay loader while loading data
-    loadTestData().then((data) => setState(() => groups = data));
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    setState(() => _isLoading = true);
+    final data = await loadTestData();
+    setState(() {
+      groups = data;
+      _isLoading = false;
+    });
   }
 
   @override
@@ -45,13 +51,39 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
         onTap: _showOptionsDrawer ? _closeOptionsDrawer : null,
         child: Stack(
           children: [
+            // Overlay data loading
+            if (_isLoading)
+              Positioned.fill(
+                child: Container(
+                  color: Colors.black.withValues(alpha: 0.4),
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const CircularProgressIndicator(),
+                        const SizedBox(height: 16,),
+                        Text(
+                          AppLocalizations.of(context)!.loadingData,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: AppSizes.fontSize(context),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             Row(
               children: [
-                Expanded(flex: 2, child: Row(children: _buildTestTree(context))),
-                // Panneau historique
+                Expanded(
+                  flex: 2,
+                  child: Row(children: _buildTestTree(context)),
+                ),
+                // Test History panel
                 if (widget.isSession)
-                                  SizedBox(
-                  width: 10,
+                  SizedBox(
+                    width: 20,
                     child: GestureDetector(
                       onTap: () => setState(() => _showHistory = !_showHistory),
                       child: MouseRegion(
@@ -68,7 +100,6 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                       ),
                     ),
                   ),
-                // TOdO: when selecting from history list, start the test
                 if (widget.isSession && _showHistory)
                   SizedBox(
                     width: 300,
@@ -87,7 +118,9 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                               ? Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    AppLocalizations.of(context)!.noCompletedTest,
+                                    AppLocalizations.of(
+                                      context,
+                                    )!.noCompletedTest,
                                   ),
                                 )
                               : ListView.builder(
@@ -124,9 +157,7 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
             // Semi-transparent overlay
             if (_showOptionsDrawer)
               Positioned.fill(
-                child: Container(
-                  color: Colors.black.withValues(alpha: 0.3),
-                ),
+                child: Container(color: Colors.black.withValues(alpha: 0.3)),
               ),
             // Options Drawer
             if (_showOptionsDrawer)
@@ -326,13 +357,10 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                       if (selectedTest != null && selectedGroup != null) {
                         final test = selectedTest!;
                         final groupName = selectedGroup!.name;
-                        final isPreTest = false; // Default to regular test, pre-test is selected in drawer
+                        final isPreTest =
+                            false; // Default to regular test, pre-test is selected in drawer
                         _closeOptionsDrawerOnly();
-                        await _startTest(
-                          test,
-                          groupName,
-                          isPreTest,
-                        );
+                        await _startTest(test, groupName, isPreTest);
                         setState(() {
                           selectedTest = null; // Clear after navigation
                         });
@@ -372,7 +400,9 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                     width: double.infinity,
                     child: OutlinedButton.icon(
                       icon: const Icon(Icons.help_outline),
-                      label: Text(AppLocalizations.of(context)!.showInstructions),
+                      label: Text(
+                        AppLocalizations.of(context)!.showInstructions,
+                      ),
                       onPressed: _showInstructions,
                     ),
                   ),
@@ -384,7 +414,9 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                     width: double.infinity,
                     child: OutlinedButton.icon(
                       icon: const Icon(Icons.library_books),
-                      label: Text(AppLocalizations.of(context)!.showComplementary),
+                      label: Text(
+                        AppLocalizations.of(context)!.showComplementary,
+                      ),
                       onPressed: _showComplementary,
                     ),
                   ),

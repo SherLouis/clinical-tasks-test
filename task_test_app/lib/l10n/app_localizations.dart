@@ -119,6 +119,12 @@ abstract class AppLocalizations {
   /// **'New session'**
   String get startNewSession;
 
+  /// No description provided for @loadingData.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading test data...'**
+  String get loadingData;
+
   /// No description provided for @chooseTest.
   ///
   /// In en, this message translates to:
@@ -161,12 +167,6 @@ abstract class AppLocalizations {
   /// **'Select a session'**
   String get selectSession;
 
-  /// No description provided for @existingSessions.
-  ///
-  /// In en, this message translates to:
-  /// **'Existing sessions'**
-  String get existingSessions;
-
   /// No description provided for @noSessions.
   ///
   /// In en, this message translates to:
@@ -196,30 +196,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This session ID already exists.'**
   String get session_idAlreadyExists;
-
-  /// No description provided for @session_enterIdLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter a session identifier : '**
-  String get session_enterIdLabel;
-
-  /// No description provided for @sessionInProgress.
-  ///
-  /// In en, this message translates to:
-  /// **'Session \"{id}\" in progress'**
-  String sessionInProgress(Object id);
-
-  /// No description provided for @session_startPreTest.
-  ///
-  /// In en, this message translates to:
-  /// **'Start pre-test'**
-  String get session_startPreTest;
-
-  /// No description provided for @session_startTest.
-  ///
-  /// In en, this message translates to:
-  /// **'Start test'**
-  String get session_startTest;
 
   /// No description provided for @deleteSession.
   ///
