@@ -33,7 +33,8 @@ def extract_images_as_png(pptx_file, output_dir):
                             check=True
                         )
                         os.remove(raw_path)
+                print(f"{i}.png")
                 break  # only first image per slide
 
 # Example usage
-extract_images_as_png("in/DO-80 stimuli.pptx.odp", "out/do80")
+extract_images_as_png("in/Test des logos connus_AL.pptx", "out/logos")

@@ -48,4 +48,4 @@ def extract_odp_images(odp_file, output_dir):
 
 
 # Example usage
-extract_odp_images("in/DO-80 stimuli.pptx.odp", "out/do80")
+extract_odp_images("in/Pyramids and Palm Trees Test - Stimuli.pptx.odp", "out/pyramids_palm_trees")

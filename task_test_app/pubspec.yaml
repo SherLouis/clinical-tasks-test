@@ -76,6 +76,17 @@ flutter:
     - assets/data/tests/boston_naming_test/test/
     - assets/data/tests/boston_naming_test/complementary/
     - assets/data/tests/do80/test/
+    - assets/data/tests/tdq30/test/
+    - assets/data/tests/tdq60/test/
+    - assets/data/tests/logos/test/
+    - assets/data/tests/irregular_words/test/
+    - assets/data/tests/pseudo_words/test/
+    - assets/data/tests/sentences/test/
+    - assets/data/tests/montembeault_pw/test/
+    - assets/data/tests/montembeault_wp/test/
+    - assets/data/tests/montembeault_pa/test/
+    - assets/data/tests/pyramids_palm_trees/test/
+    - assets/data/tests/calculs/test/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
