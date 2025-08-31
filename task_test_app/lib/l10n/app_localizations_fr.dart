@@ -110,7 +110,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get showInstructions => 'Afficher les instructions';
 
   @override
+  String get instructions => 'Instructions';
+
+  @override
   String get showComplementary => 'Afficher le matériel complémentaire';
+
+  @override
+  String get complementary => 'Matériel complémentaire';
 
   @override
   String get testOptions => 'Options du test';

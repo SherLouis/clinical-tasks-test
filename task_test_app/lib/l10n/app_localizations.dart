@@ -293,11 +293,23 @@ abstract class AppLocalizations {
   /// **'Show instructions'**
   String get showInstructions;
 
+  /// No description provided for @instructions.
+  ///
+  /// In en, this message translates to:
+  /// **'Instructions'**
+  String get instructions;
+
   /// No description provided for @showComplementary.
   ///
   /// In en, this message translates to:
   /// **'Show complementary material'**
   String get showComplementary;
+
+  /// No description provided for @complementary.
+  ///
+  /// In en, this message translates to:
+  /// **'Complementary material'**
+  String get complementary;
 
   /// No description provided for @testOptions.
   ///

@@ -87,6 +87,11 @@ flutter:
     - assets/data/tests/montembeault_pa/test/
     - assets/data/tests/pyramids_palm_trees/test/
     - assets/data/tests/calculs/test/
+    - assets/data/tests/distinction_gd/test/
+    - assets/data/tests/distinction_gd/complementary/
+    - assets/data/tests/famous_faces/test/
+    - assets/data/tests/famous_places/test/
+    - assets/data/tests/mini-sea/test/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

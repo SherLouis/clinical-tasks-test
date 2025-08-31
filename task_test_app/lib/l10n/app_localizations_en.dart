@@ -110,7 +110,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get showInstructions => 'Show instructions';
 
   @override
+  String get instructions => 'Instructions';
+
+  @override
   String get showComplementary => 'Show complementary material';
+
+  @override
+  String get complementary => 'Complementary material';
 
   @override
   String get testOptions => 'Test options';

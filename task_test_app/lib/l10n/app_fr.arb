@@ -33,6 +33,8 @@
   "startTest": "Démarrer le test",
   "startPreTest": "Démarrer le pré-test",
   "showInstructions": "Afficher les instructions",
+  "instructions": "Instructions",
   "showComplementary": "Afficher le matériel complémentaire",
+  "complementary": "Matériel complémentaire",
   "testOptions": "Options du test"
 }

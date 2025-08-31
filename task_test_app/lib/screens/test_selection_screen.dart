@@ -232,7 +232,7 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
         MaterialPageRoute(
           builder: (_) => MaterialViewer(
             imagePaths: selectedTest!.instructionsImagePaths,
-            title: 'Instructions',
+            title: AppLocalizations.of(context)!.instructions,
           ),
         ),
       );
@@ -246,7 +246,7 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
         MaterialPageRoute(
           builder: (_) => MaterialViewer(
             imagePaths: selectedTest!.complementaryImagePaths,
-            title: 'Complementary Material',
+            title: AppLocalizations.of(context)!.complementary,
           ),
         ),
       );
