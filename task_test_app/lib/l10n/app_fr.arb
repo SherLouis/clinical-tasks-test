@@ -30,11 +30,8 @@
   "cancel" : "Annuler",
   "testHistory": "Historique des tests",
   "noCompletedTest": "Aucun test complété pour cette session",
-  "startTest": "Démarrer le test",
-  "startPreTest": "Démarrer le pré-test",
-  "showInstructions": "Afficher les instructions",
+  "startTest": "Démarrer",
+  "startPreTest": "Pré-test",
   "instructions": "Instructions",
-  "showComplementary": "Afficher le matériel complémentaire",
-  "complementary": "Matériel complémentaire",
-  "testOptions": "Options du test"
+  "complementary": "Matériel complémentaire"
 }

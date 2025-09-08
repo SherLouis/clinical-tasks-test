@@ -30,11 +30,8 @@
   "cancel" : "Cancel",
   "testHistory": "Test history",
   "noCompletedTest": "No completed tests for this session",
-  "startTest": "Start test",
+  "startTest": "Start",
   "startPreTest": "Start pre-test",
-  "showInstructions": "Show instructions",
   "instructions": "Instructions",
-  "showComplementary": "Show complementary material",
-  "complementary": "Complementary material",
-  "testOptions": "Test options"
+  "complementary": "Complementary material"
 }

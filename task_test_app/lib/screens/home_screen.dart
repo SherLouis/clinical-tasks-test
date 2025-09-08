@@ -28,6 +28,8 @@ class HomeScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusGeometry.circular(20),
                   ),
+                  backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+                  foregroundColor: Theme.of(context).colorScheme.onSecondaryContainer,
                   textStyle: TextStyle(
                     fontSize: AppSizes.fontSize(context) + 4,
                     fontWeight: FontWeight.bold,
@@ -57,6 +59,8 @@ class HomeScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusGeometry.circular(20),
                   ),
+                  backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+                  foregroundColor: Theme.of(context).colorScheme.onSecondaryContainer,
                   textStyle: TextStyle(
                     fontSize: AppSizes.fontSize(context) + 4,
                     fontWeight: FontWeight.bold,

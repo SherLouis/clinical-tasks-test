@@ -101,23 +101,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noCompletedTest => 'No completed tests for this session';
 
   @override
-  String get startTest => 'Start test';
+  String get startTest => 'Start';
 
   @override
   String get startPreTest => 'Start pre-test';
 
   @override
-  String get showInstructions => 'Show instructions';
-
-  @override
   String get instructions => 'Instructions';
 
   @override
-  String get showComplementary => 'Show complementary material';
-
-  @override
   String get complementary => 'Complementary material';
-
-  @override
-  String get testOptions => 'Test options';
 }

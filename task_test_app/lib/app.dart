@@ -27,7 +27,11 @@ class TaskTestApp extends StatelessWidget {
         }
         return supportedLocales.first;
       },
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+        useMaterial3: true,
+        brightness: Brightness.dark,
+        colorSchemeSeed: Colors.blue,
+      ),
       home: const HomeScreen(),
       builder: (context, child) {
         return Title(
