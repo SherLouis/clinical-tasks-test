@@ -22,7 +22,6 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
   bool _showHistory = true;
   bool _isLoading = true;
   TestItem? selectedTest;
-  bool _showOptionsDrawer = false;
 
   @override
   void initState() {
@@ -45,8 +44,6 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
       SessionManager().sessionData?.completedTests ?? [],
     );
     completed.sort((a, b) => b.completedAt.compareTo(a.completedAt));
-
-    final highlightColor = Theme.of(context).colorScheme.primary.withAlpha(20);
 
     return Scaffold(
       appBar: AppBar(title: Text(AppLocalizations.of(context)!.chooseTest)),
@@ -251,14 +248,24 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          // Annuler
+          // Démarrer
           _buildOptionButton(
-            icon: Icons.close,
-            label: AppLocalizations.of(context)!.cancel,
-            color: Theme.of(context).colorScheme.error,
-            onTap: () => setState(() => selectedTest = null),
+            icon: Icons.play_arrow,
+            label: AppLocalizations.of(context)!.startTest,
+            color: Colors.green,
+            onTap: () async {
+              await _startTest(test, selectedGroup!.name, false);
+            },
           ),
-
+          // Pré-test (seulement si session)
+          if (widget.isSession)
+            _buildOptionButton(
+              icon: Icons.school,
+              label: AppLocalizations.of(context)!.startPreTest,
+              onTap: () async {
+                await _startTest(test, selectedGroup!.name, true);
+              },
+            ),
           // Instructions
           _buildOptionButton(
             icon: Icons.help_outline,
@@ -273,26 +280,6 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
             label: AppLocalizations.of(context)!.complementary,
             onTap: _showComplementary,
             disabled: test.complementaryImagePaths.isEmpty,
-          ),
-
-          // Pré-test (seulement si session)
-          if (widget.isSession)
-            _buildOptionButton(
-              icon: Icons.school,
-              label: AppLocalizations.of(context)!.startPreTest,
-              onTap: () async {
-                await _startTest(test, selectedGroup!.name, true);
-              },
-            ),
-
-          // Démarrer
-          _buildOptionButton(
-            icon: Icons.play_arrow,
-            label: AppLocalizations.of(context)!.startTest,
-            color: Colors.green,
-            onTap: () async {
-              await _startTest(test, selectedGroup!.name, false);
-            },
           ),
         ],
       ),
