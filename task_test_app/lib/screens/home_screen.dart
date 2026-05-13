@@ -3,6 +3,7 @@ import 'package:task_test_app/l10n/app_localizations.dart';
 import 'package:task_test_app/screens/session_select_screen.dart';
 import 'package:task_test_app/services/session_manager.dart';
 import 'package:task_test_app/utils/app_sizes.dart';
+import 'package:task_test_app/widgets/language_switcher.dart';
 import 'test_selection_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -16,6 +17,10 @@ class HomeScreen extends StatelessWidget {
           AppLocalizations.of(context)!.homeScreenTitle,
           style: TextStyle(fontSize: AppSizes.fontSize(context)),
         ),
+        actions: const [
+          LanguageSwitcher(),
+          SizedBox(width: 8),
+        ],
       ),
       body: Center(
         child: Row(

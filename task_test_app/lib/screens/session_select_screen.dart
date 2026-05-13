@@ -3,6 +3,7 @@ import 'package:task_test_app/l10n/app_localizations.dart';
 import 'package:task_test_app/models/session.dart';
 import 'package:task_test_app/screens/test_selection_screen.dart';
 import 'package:task_test_app/services/session_manager.dart';
+import 'package:task_test_app/widgets/language_switcher.dart';
 
 class SessionSelectScreen extends StatefulWidget {
   const SessionSelectScreen({super.key});
@@ -130,7 +131,13 @@ class _SessionSelectScreenState extends State<SessionSelectScreen> {
     final t = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBar(title: Text(t.selectSession)),
+      appBar: AppBar(
+        title: Text(t.selectSession),
+        actions: const [
+          LanguageSwitcher(),
+          SizedBox(width: 8),
+        ],
+      ),
       body: _sessions.isEmpty
           ? Center(child: Text(t.noSessions))
           : ListView.separated(

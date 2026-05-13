@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_test_app/l10n/app_localizations.dart';
 import 'package:task_test_app/services/session_manager.dart';
+import 'package:task_test_app/widgets/language_switcher.dart';
 import 'package:task_test_app/utils/app_sizes.dart';
 import 'package:task_test_app/data/data_loader.dart';
 import 'package:task_test_app/models/test_model.dart';
@@ -46,7 +47,13 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
     completed.sort((a, b) => b.completedAt.compareTo(a.completedAt));
 
     return Scaffold(
-      appBar: AppBar(title: Text(AppLocalizations.of(context)!.chooseTest)),
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.chooseTest),
+        actions: const [
+          LanguageSwitcher(),
+          SizedBox(width: 8),
+        ],
+      ),
       body: Stack(
         children: [
           if (_isLoading)
