@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_test_app/app.dart';
+import 'package:task_test_app/utils/translation_helper.dart';
 
 class LanguageSwitcher extends StatelessWidget {
   const LanguageSwitcher({super.key});
@@ -9,8 +10,11 @@ class LanguageSwitcher extends StatelessWidget {
     return PopupMenuButton<Locale>(
       icon: const Icon(Icons.language_outlined),
       tooltip: 'Change language',
-      onSelected: (Locale locale) {
-        TaskTestApp.of(context)?.setLocale(locale);
+      onSelected: (Locale locale) async {
+        await TranslationHelper.load(locale.languageCode);
+        if (context.mounted) {
+          TaskTestApp.of(context)?.setLocale(locale);
+        }
       },
       itemBuilder: (BuildContext context) {
         final currentLocale = Localizations.localeOf(context);

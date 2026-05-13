@@ -6,6 +6,7 @@ import 'package:task_test_app/utils/app_sizes.dart';
 import 'package:task_test_app/data/data_loader.dart';
 import 'package:task_test_app/models/test_model.dart';
 import 'package:task_test_app/widgets/material_viewer.dart';
+import 'package:task_test_app/utils/translation_helper.dart';
 import 'test_execution_screen.dart';
 
 class TestSelectionScreen extends StatefulWidget {
@@ -32,6 +33,13 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
 
   Future<void> _loadData() async {
     setState(() => _isLoading = true);
+    
+    // Ensure initState is complete before accessing Localizations
+    await Future.delayed(Duration.zero);
+    if (!mounted) return;
+
+    final locale = Localizations.localeOf(context).languageCode;
+    await TranslationHelper.load(locale);
     final data = await loadTestData();
     setState(() {
       groups = data;
@@ -108,7 +116,7 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                           });
                         },
                         child: Text(
-                          g.name,
+                          TranslationHelper.translateCategory(context, g.name),
                           style: TextStyle(
                             fontSize: AppSizes.fontSize(context),
                           ),
@@ -156,7 +164,7 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                                     });
                                   },
                                   child: Text(
-                                    t.name,
+                                    TranslationHelper.translateTest(context, t.name),
                                     style: TextStyle(
                                       fontSize: AppSizes.fontSize(context),
                                     ),
@@ -219,7 +227,7 @@ class _TestSelectionScreenState extends State<TestSelectionScreen> {
                                   final test = completed[index];
                                   return ListTile(
                                     dense: true,
-                                    title: Text(test.testName),
+                                    title: Text(TranslationHelper.translateTest(context, test.testName)),
                                     trailing: Text(
                                       _formatDateTime(test.completedAt),
                                       style: const TextStyle(
