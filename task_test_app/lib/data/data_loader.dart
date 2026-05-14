@@ -100,7 +100,7 @@ Future<List<TestGroup>> loadTestData() async {
   
   // Save to SharedPreferences
   await prefs.setString('data_version', freshDataInfo.version);
-  await prefs.setString('data_last_updated', freshDataInfo.lastUpdated.toIso8601String());
+  await prefs.setString('data_last_updated', DateTime.now().toIso8601String());
   await prefs.setString('cached_test_data', jsonEncode(versionedData.toJson()));
   
   // Pre-cache all images immediately (in the background)
