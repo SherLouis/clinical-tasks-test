@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
@@ -102,8 +103,8 @@ Future<List<TestGroup>> loadTestData() async {
   await prefs.setString('data_last_updated', freshDataInfo.lastUpdated.toIso8601String());
   await prefs.setString('cached_test_data', jsonEncode(versionedData.toJson()));
   
-  // Pre-cache all images immediately
-  await _preCacheAllImages(freshDataInfo.testGroups);
+  // Pre-cache all images immediately (in the background)
+  unawaited(_preCacheAllImages(freshDataInfo.testGroups));
   
   return freshDataInfo.testGroups;
 }

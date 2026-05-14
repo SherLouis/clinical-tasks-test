@@ -32,6 +32,7 @@
   "noCompletedTest": "Aucun test complété pour cette session",
   "startTest": "Démarrer",
   "startPreTest": "Pré-test",
+  "changeLanguage": "Changer la langue",
   "instructions": "Instructions",
   "complementary": "Matériel complémentaire"
 }

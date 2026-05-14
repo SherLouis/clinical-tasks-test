@@ -287,6 +287,12 @@ abstract class AppLocalizations {
   /// **'Start pre-test'**
   String get startPreTest;
 
+  /// No description provided for @changeLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change language'**
+  String get changeLanguage;
+
   /// No description provided for @instructions.
   ///
   /// In en, this message translates to:

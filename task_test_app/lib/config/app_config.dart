@@ -12,6 +12,6 @@ class AppConfig {
 
   // Check if cache is expired
   static bool isCacheExpired(DateTime lastUpdated) {
-    return DateTime.now().isAfter(cacheExpirationDate);
+    return DateTime.now().difference(lastUpdated) > cacheExpirationDays;
   }
 }

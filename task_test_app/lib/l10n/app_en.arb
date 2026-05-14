@@ -32,6 +32,7 @@
   "noCompletedTest": "No completed tests for this session",
   "startTest": "Start",
   "startPreTest": "Start pre-test",
+  "changeLanguage": "Change language",
   "instructions": "Instructions",
   "complementary": "Complementary material"
 }

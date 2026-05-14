@@ -1,0 +1,29 @@
+{
+  "categories": {
+    "Language": "Langage",
+    "Lecture": "Lecture",
+    "Semantique": "Sémantique",
+    "Calcul": "Calcul",
+    "Visio-spatial": "Visio-spatial",
+    "Emotion": "Émotion"
+  },
+  "tests": {
+    "Boston Naming Test": "Boston Naming Test",
+    "DO-80 simple": "DO-80 simple",
+    "TDQ 30": "TDQ 30",
+    "TDQ 60": "TDQ 60",
+    "Logos": "Logos",
+    "Mots irréguliers": "Mots irréguliers",
+    "Pseudo mots": "Pseudo mots",
+    "Phrases": "Phrases",
+    "Images - Images": "Images - Images",
+    "Mots - Mots": "Mots - Mots",
+    "Images - Mots": "Images - Mots",
+    "Pyramids Palm Trees": "Pyramids Palm Trees",
+    "Calculs simples": "Calculs simples",
+    "Distinction corps G/D": "Distinction corps G/D",
+    "Visages célèbres": "Visages célèbres",
+    "Monuments célèbres": "Monuments célèbres",
+    "Visages - émotion": "Visages - émotion"
+  }
+}
