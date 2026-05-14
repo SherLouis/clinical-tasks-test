@@ -107,6 +107,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get startPreTest => 'Start pre-test';
 
   @override
+  String get changeLanguage => 'Change language';
+
+  @override
   String get instructions => 'Instructions';
 
   @override
